@@ -9,6 +9,8 @@ springboot默认的全局配置文件名为application.properties或者applicati
 additional-spring-configuration-metadata.json属性元文件
 
 
+参考note/log/log4j/log4j的使用.txt
+
 
 
 
@@ -16,3 +18,8 @@ additional-spring-configuration-metadata.json属性元文件
 
 SpringBoot | 第三章：springboot配置详解
 https://blog.lqdev.cn/2018/07/14/springboot/chapter-third/
+
+
+参考
+https://logback.qos.ch/manual/appenders.html#TimeBasedRollingPolicy
+https://www.cnblogs.com/warking/p/5710303.html
