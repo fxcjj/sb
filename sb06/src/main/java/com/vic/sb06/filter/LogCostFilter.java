@@ -16,7 +16,7 @@ public class LogCostFilter implements Filter {
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-
+        //启动容器时初始化，在listener之后，在servlet之前
     }
 
     @Override
@@ -32,6 +32,6 @@ public class LogCostFilter implements Filter {
 
     @Override
     public void destroy() {
-
+        //容器销毁后执行，在servlet之后
     }
 }

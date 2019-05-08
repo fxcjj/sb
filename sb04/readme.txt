@@ -1,25 +1,15 @@
 
-约定优于配置
-
-springboot默认的全局配置文件名为application.properties或者application.yml(spring官方推荐使用的格式是.yml格式
-
-除此之外还有一个 bootstrap 的全局文件，它的加载顺序在application配置文件之前，主要是用于在应用程序上下文的引导阶段
-
-配置提示
-additional-spring-configuration-metadata.json属性元文件
+Digest
+1. spring boot默认使用commons-logging实现日志
+2. slf4j-api是接口，实现有多个如：log4j,logback等
+3. logback是直接实现，更好
+4. logback配置放在在resources目录下，名称为logback-spring.xml时spring boot会自动找到，可以不用在application.properties中配置路径
 
 
-参考note/log/log4j/log4j的使用.txt
-
-
-
-
-
-
-SpringBoot | 第三章：springboot配置详解
+References
+//SpringBoot | 第三章：springboot配置详解
 https://blog.lqdev.cn/2018/07/14/springboot/chapter-third/
-
-
-参考
 https://logback.qos.ch/manual/appenders.html#TimeBasedRollingPolicy
 https://www.cnblogs.com/warking/p/5710303.html
+note/log/log4j/log4j的使用.txt
+note/log/logback
