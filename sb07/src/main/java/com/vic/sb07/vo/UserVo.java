@@ -6,11 +6,13 @@ import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 
+import javax.validation.Valid;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
 
 /**
+ *
  * @author 罗利华
  * date: 2019/5/7 16:19
  */
@@ -56,8 +58,17 @@ public class UserVo {
     @Email(message = "邮箱地址不合法")
     private String email;
 
+    /**
+     * 自定义校验注解
+     */
     //0未知 1男 2女
     @Gender(allowed = {0, 1, 2}, groups = {Add.class, Update.class})
     private Integer gender;
+
+    //部门
+    /*@Valid //嵌套验证必须用@Valid
+    @Null(message = "部门必须为空", groups = {Add.class})
+    @NotNull(message = "部门不能为空", groups = {Update.class})
+    private DeptVo deptVo;*/
 
 }

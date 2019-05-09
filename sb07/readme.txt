@@ -11,11 +11,17 @@ Digest
 ...
 4. 使用在vo上的属性上
 5. 使用在controller的方法参数上，@Validated
-6. 分组
-7. 可以使用在单个参数上
+6. 分组groups={Add.class, Update.class}
+7. 可以使用在单个方法参数上
 8. 自定义校验注解 @Gender, GenderValidator
 9. 多个方法参数 methodName(param1,bindingresult, param2, bindingresult2...)
-
+10. 嵌套校验
+方法参数使用@Validated或@Valid，属性为对象且需要校验时使用@Valid
+11. 配置提示信息
+12. 手动校验
+@Autowired
+private Validator validator;
+Set<ConstraintViolation<User>> validate = validator.validate(user, User.Add.class);
 
 References
 //SpringBoot | 第八章：统一异常、数据校验处理

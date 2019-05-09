@@ -5,6 +5,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
 
     @PostMapping("addUser")
-    public String addUser(@Validated({UserVo.Add.class}) UserVo userVo, BindingResult bindingResult) {
+    public String addUser(@Validated({UserVo.Add.class}) @RequestBody UserVo userVo, BindingResult bindingResult) {
 
         if(bindingResult.hasErrors()) {
             StringBuilder errorMsg = new StringBuilder();
