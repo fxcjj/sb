@@ -13,7 +13,7 @@ import javax.validation.ConstraintViolationException;
  * date: 2019/5/9 17:50
  */
 @ControllerAdvice
-@Component
+//@Component
 public class GlobalExceptionHandlerAdvice {
 
 //    @ExceptionHandler(ConstraintViolationException.class)

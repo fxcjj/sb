@@ -1,13 +1,13 @@
 package com.vic.sb07.controller;
 
 import com.vic.sb07.vo.UserVo;
+import lombok.ToString;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.constraints.NotEmpty;
 
 /**
  * 测试类
@@ -18,21 +18,41 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("user")
 public class UserController {
 
-    @PostMapping("addUser")
-    public String addUser(@Validated({UserVo.Add.class}) @RequestBody UserVo userVo, BindingResult bindingResult) {
-
+    @GetMapping("single")
+    public String addUser(@NotEmpty(message = "姓名不能为空") String name, BindingResult bindingResult) {
+        System.out.println(name);
         if(bindingResult.hasErrors()) {
             StringBuilder errorMsg = new StringBuilder();
-            for(FieldError fe : bindingResult.getFieldErrors()) {
+            bindingResult.getFieldErrors().forEach(error -> {
+                errorMsg.append(error.getField()).append(error.getDefaultMessage()).append("\r\n");
+            });
+            return errorMsg.toString();
+        }
+        return "omg";
+    }
+
+
+    /**
+     * 添加用户
+     * @param userVo
+     * @param bindingResult
+     * @return
+     */
+    @PostMapping("addUser")
+    public String addUser(@RequestBody @Validated({UserVo.Add.class}) UserVo userVo, BindingResult bindingResult) {
+
+        System.out.println(userVo);
+        if(bindingResult.hasErrors()) {
+            StringBuilder errorMsg = new StringBuilder();
+            /*for(FieldError fe : bindingResult.getFieldErrors()) {
                 errorMsg.append(fe.getDefaultMessage());
                 break;
-            }
+            }*/
 
             //java8 for循环不能break
-            /*bindingResult.getFieldErrors().forEach(error -> {
+            bindingResult.getFieldErrors().forEach(error -> {
                 errorMsg.append(error.getField()).append(error.getDefaultMessage()).append("\r\n");
-                return;
-            });*/
+            });
             return errorMsg.toString();
         }
 
@@ -40,8 +60,14 @@ public class UserController {
         return "ok";
     }
 
+    /**
+     * 更新用户
+     * @param userVo
+     * @param bindingResult
+     * @return
+     */
     @PostMapping("updateUser")
-    public String updateUser(@Validated({UserVo.Update.class}) UserVo userVo, BindingResult bindingResult) {
+    public String updateUser(@RequestBody @Validated({UserVo.Update.class}) UserVo userVo, BindingResult bindingResult) {
 
         if(bindingResult.hasErrors()) {
             StringBuilder errorMsg = new StringBuilder();

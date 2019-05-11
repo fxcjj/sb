@@ -1,0 +1,36 @@
+<meta charset="utf-8" />
+<title>ajax test</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript">
+jQuery(function($){
+	$('button').click(function(){
+		$.ajax({
+			url:"http://localhost:1212/user/addUser",
+			type:"POST",
+			data:{
+				"id":"",
+				"name":""
+			},
+			beforeSend: function(XMLHttpRequest){
+                XMLHttpRequest.setRequestHeader("Content-Type", "application/json; charset=utf-8");
+			},
+			success:function(data) 
+			{ 
+				alert(data+"123");
+			}, 
+			error: function(){
+				alert('error');
+			}
+            });
+		//$('#out').empty().load('test1.php',{ name : $name });
+	});
+});
+</script>
+<style type="text/css"></style>
+</head>
+<body>
+<button id="btn-1" name="1">Send</button>
+
+<div id="out"></div>
+</body>
+</html>
