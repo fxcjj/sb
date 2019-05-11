@@ -8,9 +8,9 @@ import lombok.Data;
  * date: 2019/5/8 13:49
  */
 @AllArgsConstructor
-public enum RespCode {
+public enum StatusCode {
 
-    SUCCESS("0", "success"),
+    SUCCESS("0000", "success"),
     FAIL("1", "fail"),
 
     ;
