@@ -17,43 +17,9 @@ import javax.validation.constraints.Size;
  * @author 罗利华
  * date: 2019/5/6 15:56
  */
-@Validated
 @RestController
 @RequestMapping("user")
 public class UserController {
-
-    /**
-     * name不能为空且长度在2~10之间
-     * age允许为空（即不传参数名age），如果传递age，则必须大于3岁
-     *
-     * 校验失败会抛出 ConstraintViolationException，定义全局异常处理类（个人推荐）
-     *
-     * @param name
-     * @param age
-     * @return
-     */
-    @GetMapping("single")
-    public String addUser(@NotEmpty(message = "姓名不能为空") @Length(min = 2, max = 20, message = "姓名长度在2-10位之间") String name,
-                          @Min(value = 3, message = "年龄必须大于3岁") String age) {
-        System.out.println(name);
-        System.out.println(age);
-        return "omg";
-    }
-
-    /**
-     * 添加用户
-     * 不使用BindingResult
-     *
-     * 校验失败会抛出 MethodArgumentNotValidException，定义全局异常处理类（个人推荐）
-     * @param userVo
-     * @param bindingResult
-     * @return
-     */
-    @PostMapping("addUser1")
-    public String addUser1(@RequestBody @Validated({UserVo.Add.class}) UserVo userVo) {
-        System.out.println(userVo);
-        return "ok";
-    }
 
     /**
      * 添加用户

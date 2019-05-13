@@ -22,6 +22,7 @@ Digest
 @Autowired
 private Validator validator;
 Set<ConstraintViolation<User>> validate = validator.validate(user, User.Add.class);
+13. @Pattern
 
 References
 //SpringBoot | 第八章：统一异常、数据校验处理

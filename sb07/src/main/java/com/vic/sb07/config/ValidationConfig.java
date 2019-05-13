@@ -12,7 +12,7 @@ import org.springframework.validation.beanvalidation.MethodValidationPostProcess
 public class ValidationConfig {
 
     /**
-     * 处理单个参数，不用配置下面的bean
+     * 校验单个参数，不用配置下面的bean照样可以呀
      * @return
      */
 //    @Bean
