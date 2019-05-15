@@ -20,7 +20,7 @@ import java.util.*;
 @ControllerAdvice
 public class GlobalExceptionHandlerAdvice {
 
-    private static final String DEFAULT_ERROR_VIEW = "erro.html";
+    private static final String DEFAULT_ERROR_VIEW = "error.html";
 
     /**
      * 处理方法的单个参数校验抛出的异常
@@ -59,10 +59,9 @@ public class GlobalExceptionHandlerAdvice {
      * @param req
      * @param e
      * @return
-     * @throws Exception
      */
     @ExceptionHandler(value = Exception.class)
-    public ModelAndView defaultErrorHandler(HttpServletRequest req, Exception e) throws Exception {
+    public ModelAndView defaultErrorHandler(HttpServletRequest req, Exception e) {
         ModelAndView mav = new ModelAndView();
         mav.addObject("exception", e);
         mav.addObject("url", req.getRequestURL());
