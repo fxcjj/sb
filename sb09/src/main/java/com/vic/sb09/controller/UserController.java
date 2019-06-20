@@ -72,7 +72,7 @@ public class UserController {
     /**
      * ApiParam 表示参数放在body部分
      *
-     * 下面这行不应该同时出现在一行！推荐使用ApiImplicitParams
+     * 下面这行ApiParam和RequestParam不应该同时出现在一行！推荐使用ApiImplicitParams
      * @ApiParam(name = "phone", value = "手机号", required = true) @RequestParam
      *
      * @param phone
@@ -97,10 +97,6 @@ public class UserController {
     public String jsonTest() {
         return "impossible!";
     }
-
-
-
-
 
 
 }
