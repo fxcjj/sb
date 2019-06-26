@@ -17,7 +17,8 @@ public class InterceptorConfig extends WebMvcConfigurerAdapter {
         //执行顺序按添加顺序为准
         registry.addInterceptor(new LogCostInterceptor()).addPathPatterns("/**");
 
-        super.addInterceptors(registry);
+        //父类中，这个方法什么都没做
+//        super.addInterceptors(registry);
     }
 
 }
