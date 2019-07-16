@@ -24,4 +24,28 @@ public class Sb08ApplicationTests {
 
     }
 
+
+    @Test
+    public void testInsert() {
+        /**
+         * 当前编码为uft-8
+         */
+        String name = "张三";
+//        System.out.println(name.length()); //2
+//        System.out.println(name.getBytes().length); //6
+
+        User u = new User();
+        /**
+         * 指的是字符长度，而非字节数
+         * `name` varchar(20) DEFAULT NULL COMMENT '名称',
+         * 以下报错（Data too long for column 'name' at row 1）
+         * 123456789012345678901
+         * 一二三四五六七八九十一二三四五六七八九十中
+         * 原因是数据库长度为20，这里的字符长度为21
+         */
+        u.setName("123456789012345678901");
+        userRepository.save(u);
+
+    }
+
 }

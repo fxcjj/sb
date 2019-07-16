@@ -28,14 +28,14 @@ public class Swagger2Config {
     /**
      * 是否开启swagger，正式环境一般关闭，可根据springboot的多环境配置进行设置
      */
-    @Value("${swagger.enabled}")
-    private Boolean swaggerEnabled;
+    @Value("${swagger2.enabled}")
+    private Boolean swagger2Enabled;
 
     @Bean
     public Docket createRestApi() {
         return new Docket(DocumentationType.SWAGGER_2).apiInfo(apiInfo())
                 // 是否开启
-                .enable(swaggerEnabled).select()
+                .enable(swagger2Enabled).select()
                 // 扫描的路径包
                 .apis(RequestHandlerSelectors.basePackage("com.vic.sb09")) ////多路径扫描，之间用逗号分隔
                 // 指定路径处理PathSelectors.any()代表所有的路径
