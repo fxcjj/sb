@@ -1,0 +1,17 @@
+
+# \u8BBF\u95EE\u7AEF\u53E3
+server:
+  port: 1235
+
+# jwt\u914D\u7F6E
+audience:
+  clientId: 123
+  # i am your dady
+  base64Secret: aSBhbSB5b3VyIGRhZHk=
+  name: victor
+  # 48\u5C0F\u65F6
+  expireSecond: 172800
+
+# \u8FC7\u6EE4\u5668\u5F00\u5173
+filter:
+  switch: true
