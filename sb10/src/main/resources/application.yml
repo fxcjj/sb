@@ -1,17 +1,18 @@
 
-# \u8BBF\u95EE\u7AEF\u53E3
 server:
-  port: 1235
+  port: 1236
 
-# jwt\u914D\u7F6E
+# jwt configuration
 audience:
+  # the audience
   clientId: 123
-  # i am your dady
+  # the original string is <i am your dady>
   base64Secret: aSBhbSB5b3VyIGRhZHk=
+  # issuer
   name: victor
-  # 48\u5C0F\u65F6
+  # 48 hours
   expireSecond: 172800
 
-# \u8FC7\u6EE4\u5668\u5F00\u5173
+# filter switch
 filter:
   switch: true

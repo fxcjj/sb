@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.vic</groupId>
-    <artifactId>sb11</artifactId>
+    <artifactId>sb12</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
-    <name>sb11</name>
+    <name>sb12</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>

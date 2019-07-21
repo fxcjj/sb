@@ -21,18 +21,18 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping("user")
 public class UserController extends BaseController {
 
-    @GetMapping("beam")
-    public String beam() {
-        String [] a = {"a", "c", "c"};
-        return "beam";
-    }
-
     @Autowired
     UserService userService;
 
     @Autowired
     private Audience audience;
 
+
+    @GetMapping("beam")
+    public String beam() {
+        String [] a = {"a", "c", "c"};
+        return "beam";
+    }
 
     /**
      * 登录
@@ -53,9 +53,9 @@ public class UserController extends BaseController {
                 user.getRole(),
                 audience.getClientId(),
                 audience.getName(),
-                audience.getExpiresSecond() * 1000,
+                audience.getExpireSecond() * 1000,
                 audience.getBase64Secret());
-
+        // 固定格式
         String token = "bearer;" + jwtToken;
         return success(token);
     }

@@ -1,4 +1,4 @@
-package com.vic.sb10.config;
+package com.vic.sb11.config;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

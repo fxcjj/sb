@@ -1,7 +1,7 @@
-package com.vic.sb10.config;
+package com.vic.sb11.config;
 
 import com.google.common.collect.Lists;
-import com.vic.sb10.filter.JwtFilter;
+import com.vic.sb11.filter.CheckTokenFilter;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
@@ -22,7 +22,7 @@ public class FilterConfig {
     @Bean
     public FilterRegistrationBean jwtFilterRegistration() {
         FilterRegistrationBean registrationBean = new FilterRegistrationBean();
-        registrationBean.setFilter(new JwtFilter());
+        registrationBean.setFilter(new CheckTokenFilter());
         // 添加需要拦截的url
         List<String> urlPatterns = Lists.newArrayList();
         // 除登录以外，都应当拦截

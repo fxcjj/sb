@@ -1,4 +1,4 @@
-package com.vic.sb10.exception;
+package com.vic.sb11.exception;
 
 import com.vic.sb10.resp.ResponseResult;
 import lombok.extern.slf4j.Slf4j;

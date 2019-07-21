@@ -1,4 +1,4 @@
-package com.vic.sb10.entity;
+package com.vic.sb11.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

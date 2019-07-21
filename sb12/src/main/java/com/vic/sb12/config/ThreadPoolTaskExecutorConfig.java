@@ -1,4 +1,4 @@
-package com.vic.sb11.config;
+package com.vic.sb12.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;

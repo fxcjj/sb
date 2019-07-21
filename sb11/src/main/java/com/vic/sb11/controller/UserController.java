@@ -1,12 +1,19 @@
 package com.vic.sb11.controller;
 
+import com.vic.sb11.config.Audience;
+import com.vic.sb11.entity.User;
+import com.vic.sb11.enums.ResultEnum;
+import com.vic.sb11.exception.BusinessException;
+import com.vic.sb11.resp.ResponseResult;
 import com.vic.sb11.service.UserService;
+import com.vic.sb11.utils.JwtHelper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Async;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.stream.IntStream;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * 用户控制器
@@ -15,45 +22,45 @@ import java.util.stream.IntStream;
  */
 @RestController
 @RequestMapping("user")
-public class UserController {
+public class UserController extends BaseController {
 
     @Autowired
     UserService userService;
 
+    @Autowired
+    private Audience audience;
+
+
+    @GetMapping("beam")
+    public String beam() {
+        String [] a = {"a", "c", "c"};
+        return "beam";
+    }
+
     /**
-     * 异步方式
+     * 登录
+     * @param request
+     * @param username
+     * @param password
      * @return
      */
-    @RequestMapping("async")
-    public String sway() {
-        System.out.println("1 Start sway");
+    @PostMapping("login")
+    public ResponseResult login(HttpServletRequest request, String username, String password) {
+        User user = userService.queryUserByUsernameAndPassword(username, password);
+        if(user == null) {
+            throw new BusinessException(ResultEnum.USER_NOT_EXISTS);
+        }
 
-        /**
-         * 可以
-         */
-        userService.sendSms();
-
-        /**
-         * 不可以
-         */
-//        hello();
-
-        System.out.println("4 End sway");
-        return "sway";
+        String jwtToken = JwtHelper.createJWT(user.getUsername(),
+                user.getId(),
+                user.getRole(),
+                audience.getClientId(),
+                audience.getName(),
+                audience.getExpireSecond() * 1000,
+                audience.getBase64Secret());
+        // 固定格式
+        String token = "bearer;" + jwtToken;
+        return success(token);
     }
-
-    @Async
-    public void hello() {
-        System.out.println("2 Start hello");
-        IntStream.range(0, 5).forEach(d -> {
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        });
-        System.out.println("3 End hello");
-    }
-
 
 }

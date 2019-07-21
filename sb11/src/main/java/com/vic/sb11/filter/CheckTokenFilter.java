@@ -1,10 +1,10 @@
-package com.vic.sb10.filter;
+package com.vic.sb11.filter;
 
 
-import com.vic.sb10.config.Audience;
-import com.vic.sb10.enums.ResultEnum;
-import com.vic.sb10.exception.BusinessException;
-import com.vic.sb10.utils.JwtHelper;
+import com.vic.sb11.config.Audience;
+import com.vic.sb11.enums.ResultEnum;
+import com.vic.sb11.exception.BusinessException;
+import com.vic.sb11.utils.JwtHelper;
 import io.jsonwebtoken.Claims;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.BeanFactory;
@@ -12,8 +12,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 import org.springframework.web.filter.GenericFilterBean;
 
-import javax.security.auth.login.LoginException;
-import javax.servlet.*;
+import javax.servlet.FilterChain;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -24,7 +26,7 @@ import java.io.IOException;
  * date: 2019/6/27 18:51
  */
 @Slf4j
-public class JwtFilter extends GenericFilterBean {
+public class CheckTokenFilter extends GenericFilterBean {
 
     @Autowired
     private Audience audience;

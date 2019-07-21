@@ -1,16 +1,18 @@
-server:
-  port: 1919
 
-# \u5F02\u6B65\u4EFB\u52A1\u914D\u7F6E
-async:
-  task:
-    # \u6700\u5C0F\u5DE5\u4F5C\u7EBF\u7A0B
-    minSize: 5
-    # \u6700\u5927\u5DE5\u4F5C\u7EBF\u7A0B
-    maxSize: 30
-    #\u961F\u5217\u6570\u91CF
-    queues: 200
-    # \u5141\u8BB8\u7A7A\u95F2\u65F6\u95F4(\u79D2)
-    keepAlive: 60
-    # \u7EBF\u7A0B\u540D\u79F0\u524D\u7F00
-    namePrefix: "taskExecutor-"
+server:
+  port: 1236
+
+# jwt configuration
+audience:
+  # the audience
+  clientId: 123
+  # the original string is <i am your dady>
+  base64Secret: aSBhbSB5b3VyIGRhZHk=
+  # issuer
+  name: victor
+  # 48 hours
+  expireSecond: 172800
+
+# filter switch
+filter:
+  switch: true

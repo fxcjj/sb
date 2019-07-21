@@ -1,27 +1,41 @@
 package com.vic.sb11.service;
 
-import org.springframework.scheduling.annotation.Async;
+import com.vic.sb11.entity.User;
 import org.springframework.stereotype.Service;
 
-import java.util.stream.IntStream;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author 罗利华
- * date: 2019/7/16 20:18
+ * date: 2019/6/27 19:55
  */
 @Service
 public class UserService {
 
-    @Async
-    public void sendSms() {
-        System.out.println("2 Start sendSms");
-        IntStream.range(0, 5).forEach(d -> {
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        });
-        System.out.println("3 End sendSms");
+    public static List<User> userList = new ArrayList<>();
+
+    static {
+        userList.add(new User(1, "u1", "e1", "p1", "role1"));
+        userList.add(new User(2, "u2", "e2", "p2", "role2"));
+        userList.add(new User(3, "u3", "e3", "p3", "role3"));
     }
+
+    /**
+     * 通过用户和密码查询
+     * @param username
+     * @param password
+     * @return
+     */
+    public User queryUserByUsernameAndPassword(String username, String password) {
+
+        for(User ele : userList) {
+            if(ele.getUsername().equals(username) && ele.getPassword().equals(password)) {
+                return ele;
+            }
+        }
+        return null;
+
+    }
+
 }
