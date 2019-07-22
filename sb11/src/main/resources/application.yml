@@ -2,17 +2,27 @@
 server:
   port: 1236
 
-# jwt configuration
-audience:
-  # the audience
-  clientId: 123
-  # the original string is <i am your dady>
-  base64Secret: aSBhbSB5b3VyIGRhZHk=
-  # issuer
-  name: victor
-  # 48 hours
-  expireSecond: 172800
+# system security configuration
+sys:
+  security:
+    # 混淆密令
+    salt: 123456
+    # 公钥解密（验签）
+    publicKey: MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCwS5KK7QkufbH9BMfOIHnkEE8c6YDw7jJXTjJc3lxvon9MaKpVlRVK+A/7Yz0mdFIOoNvJ8pw0X6tS6r5o6xmTVGwq92jGtFUYfexT+Mqk7WFlS68poAU4i5QCtLmt7m6ZAO866VM4hdHR62KftGm6aSeYaiObAmsqZY2kSIliewIDAQAB
+    # 私钥加密（加签）
+    privateKey: MIICdwIBADANBgkqhkiG9w0BAQEFAASCAmEwggJdAgEAAoGBALBLkortCS59sf0Ex84geeQQTxzpgPDuMldOMlzeXG+if0xoqlWVFUr4D/tjPSZ0Ug6g28nynDRfq1LqvmjrGZNUbCr3aMa0VRh97FP4yqTtYWVLrymgBTiLlAK0ua3ubpkA7zrpUziF0dHrYp+0abppJ5hqI5sCaypljaRIiWJ7AgMBAAECgYEAgxAL6ACEvO1xb1sod9OpCqYdSq9Fztgm0MUvp98f9VZnMRT23R0ycUOuDgQfKAF+J6XrAF2/RyiAo+okmLd/kMtoJQ3yQFXMI+otUgTMclDhZHs/5Jfqkly5hYD7q0+BvIOBpWsY5i1JBcXFu0v4kRLFK5tMCvD3CliKxdawNcECQQDz0N56CoV+u1+3Xs6Cqxz2TPmWZXb21rX94bgGn9KLIH/vu+VxCAxTDFJxgAXwCa1R2XYKNj2nc+BI7HjqeKRrAkEAuRrprUfRQCCqCnah8GjH3GkU1Icp3GT8Lwkc0WH52J4Zi0cwtPf4KKU4cb5cg5ckacEgvlE6BScg1hRXduA+MQJBAMOdr/HQoTyFzwzLNvrlmM4QAivlamYu7EMupzxBXGYdhCfu4+4lG+ZBu5+urJTi3rkNtUQKMrs4IBnCCF1uv9MCQF16QdfIFNwVosl174HA6G1eg65wM6uhM9ls+Kikmc/Sx4OWh/pb325nQYHvaDjr8u+VIDv8ORixEdwKmcDmrYECQH480U0lvmBpzhnsi2kkt3uSWEANM+SFoPclNBKLJJ2pWOJX2lOeGq9M8b9glbyTe8Q/+umvR0mg+mfgkL5IUGE=
 
-# filter switch
-filter:
+# jwt configuration
+jwt:
+  # the header key name
+  token-header-name: token
+  # issuer
+#  token-issuer: victor
+  # 48 hours
+  token-expire-second: 172800
+  # 此版本使用上面的公钥、私钥，使用secret请参考sb10项目
+#  secret: aSBhbSB5b3VyIGRhZHk=
+
+# interceptor switch
+interceptor:
   switch: true

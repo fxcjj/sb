@@ -16,6 +16,6 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface CheckToken {
 
-    boolean required() default true;
+//    boolean required() default true;
 
 }

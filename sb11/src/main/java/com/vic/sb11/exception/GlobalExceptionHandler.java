@@ -1,6 +1,6 @@
 package com.vic.sb11.exception;
 
-import com.vic.sb10.resp.ResponseResult;
+import com.vic.sb11.resp.ResponseResult;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.ExceptionHandler;

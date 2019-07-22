@@ -16,9 +16,9 @@ public class UserService {
     public static List<User> userList = new ArrayList<>();
 
     static {
-        userList.add(new User(1, "u1", "e1", "p1", "role1"));
-        userList.add(new User(2, "u2", "e2", "p2", "role2"));
-        userList.add(new User(3, "u3", "e3", "p3", "role3"));
+        userList.add(new User(1L, "u1", "e1", "p1", "role1"));
+        userList.add(new User(2L, "u2", "e2", "p2", "role2"));
+        userList.add(new User(3L, "u3", "e3", "p3", "role3"));
     }
 
     /**

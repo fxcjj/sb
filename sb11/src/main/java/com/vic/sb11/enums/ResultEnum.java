@@ -14,6 +14,8 @@ public enum ResultEnum {
     FAIL("111", "fail"),
     LOGIN_ERROR("1", "登录错误"),
     USER_NOT_EXISTS("2", "用户不存在"),
+    TOKEN_EMPTY("3", "token为空，请重新登录"),
+    TOKEN_EXPIRE("4", "token过期，请重新登录"),
     ;
 
     String code;
