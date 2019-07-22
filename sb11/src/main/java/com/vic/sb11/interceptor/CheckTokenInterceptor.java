@@ -5,7 +5,6 @@ import com.vic.sb11.enums.ResultEnum;
 import com.vic.sb11.exception.BusinessException;
 import com.vic.sb11.jwt.JWTInfo;
 import com.vic.sb11.service.CacheService;
-import com.vic.sb11.utils.JWTHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.util.StringUtils;

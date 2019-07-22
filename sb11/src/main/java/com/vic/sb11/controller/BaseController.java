@@ -1,11 +1,8 @@
 package com.vic.sb11.controller;
 
-import com.sun.prism.impl.BaseContext;
 import com.vic.sb11.enums.ResultEnum;
-import com.vic.sb11.exception.BusinessException;
 import com.vic.sb11.jwt.JWTInfo;
 import com.vic.sb11.resp.ResponseResult;
-import com.vic.sb11.utils.JWTHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.util.StringUtils;
@@ -13,8 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @author 罗利华
