@@ -12,10 +12,7 @@ import com.vic.sb11.utils.DateUtils;
 import com.vic.sb11.utils.JWTHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
@@ -47,6 +44,11 @@ public class UserController extends BaseController {
     @Value("${jwt.token-expire-second}")
     private Integer tokenExpireSecond;
 
+    @GetMapping("khan")
+    public String khan() {
+        return "khan";
+    }
+
     @CheckToken
     @GetMapping("beam")
     public String beam() {
@@ -62,6 +64,10 @@ public class UserController extends BaseController {
      */
     @PostMapping("login")
     public ResponseResult login(HttpServletRequest request, String username, String password) {
+        // 获取请求头信息
+        String say = request.getHeader("say");
+        System.out.println("login say: " + say);
+
         User user = userService.queryUserByUsernameAndPassword(username, password);
         if(user == null) {
             throw new BusinessException(ResultEnum.USER_NOT_EXISTS);

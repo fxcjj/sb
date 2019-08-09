@@ -16,6 +16,10 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @ConditionalOnProperty(prefix = "interceptor", name = "switch", havingValue = "true")
 public class InterceptorConfig extends WebMvcConfigurerAdapter {
 
+    /**
+     * 使用此方式，在拦截中@Value才可用
+     * @return
+     */
     @Bean
     CheckTokenInterceptor checkTokenInterceptor() {
         return new CheckTokenInterceptor();

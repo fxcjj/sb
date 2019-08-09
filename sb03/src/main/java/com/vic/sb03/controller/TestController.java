@@ -4,11 +4,17 @@ import com.vic.sb03.conf.ConfigBean;
 import com.vic.sb03.conf.Shaver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
+//@RestController
+@Controller
 @RequestMapping("test")
 public class TestController {
 
@@ -49,6 +55,20 @@ public class TestController {
     @RequestMapping("/shaver")
     public String shaver() {
         return shaver.getName() + ", " + shaver.getSize();
+    }
+
+
+    @GetMapping("re")
+    public void test(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String a = "redirect:http://sandbox.sxfq.com/huolika/index.html#/authstatus?success=true&terminalType=0&authType=5";
+            response.sendRedirect(a);
+    }
+
+
+    @GetMapping("re1")
+    public String test1(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String a = "redirect:http://sandbox.sxfq.com/huolika/index.html#/authstatus?success=true&terminalType=0&authType=5";
+        return a;
     }
 
 }

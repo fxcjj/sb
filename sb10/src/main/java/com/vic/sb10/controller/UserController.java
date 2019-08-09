@@ -27,7 +27,6 @@ public class UserController extends BaseController {
     @Autowired
     private Audience audience;
 
-
     @GetMapping("beam")
     public String beam() {
         String [] a = {"a", "c", "c"};

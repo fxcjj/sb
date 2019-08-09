@@ -28,5 +28,16 @@ public class LogTestController1 {
         return "ok";
     }
 
+    @RequestMapping("/test2")
+    public String test2() {
+        try {
+            int i = 3/0;
+
+        } catch (Exception e) {
+            log.error("error:{}", e);
+        }
+        return "ok";
+    }
+
 
 }
