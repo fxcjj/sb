@@ -1,10 +1,10 @@
 package com.vic.sb08.entity;
 
 import lombok.Data;
+import lombok.ToString;
+import org.hibernate.annotations.DynamicUpdate;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -13,7 +13,10 @@ import java.util.Date;
  * date: 2019/5/13 19:06
  */
 @Data
-@Entity(name = "v_user")
+@Entity
+@Table(name = "v_user")
+@DynamicUpdate
+@ToString
 public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -22,8 +25,8 @@ public class User implements Serializable {
      * 主键
      */
     @Id
-    @GeneratedValue
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     /**
      * 用户名
@@ -59,6 +62,8 @@ public class User implements Serializable {
      * 修改时间
      */
     private Date gmtModified;
+
+
 
 
 }

@@ -23,6 +23,11 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
+    @GetMapping("test")
+    public String test() {
+        return "ok";
+    }
+
     @PostMapping("saveUser")
     public String saveUser(/*@RequestBody User user*/){
 

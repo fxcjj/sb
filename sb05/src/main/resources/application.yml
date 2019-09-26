@@ -3,7 +3,10 @@
 spring:
   profiles:
     active: dev
-
+  application:
+    name:
 # \u6307\u5B9A\u7AEF\u53E3
 server:
   port: 8085
+
+victor.name: victor

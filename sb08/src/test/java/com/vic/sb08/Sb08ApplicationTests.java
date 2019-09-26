@@ -1,27 +1,238 @@
 package com.vic.sb08;
 
 import com.vic.sb08.entity.User;
+import com.vic.sb08.repository.LoanCreditWayThirdLinkRepository;
 import com.vic.sb08.repository.UserRepository;
+import com.vic.sb08.vo.LoanCreditWayThirdLinkVo;
+import com.vic.sb08.vo.SimpleUserVo;
+import com.vic.sb08.vo.SimpleVo;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.util.CollectionUtils;
 
+import java.lang.reflect.Constructor;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class Sb08ApplicationTests {
+
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    LoanCreditWayThirdLinkRepository loanCreditWayThirdLinkRepository;
+
+
+    @Test
+    public void testCustomeVo() {
+        SimpleUserVo vo = userRepository.testCustomeVo(1L);
+        System.out.println(vo);
+    }
+
+    @Test
+    public void testPage2() {
+        PageRequest pageRequest = PageRequest.of(1, 3);
+        Page<LoanCreditWayThirdLinkVo> page = loanCreditWayThirdLinkRepository.testPage2(pageRequest);
+
+        long totalElements = page.getTotalElements();
+        int totalPages = page.getTotalPages();
+        System.out.println("totalElements: " + totalElements);
+        System.out.println("totalPages: " + totalPages);
+
+        List<LoanCreditWayThirdLinkVo> content = page.getContent();
+        for (Object vo : content) {
+            System.out.println(vo);
+        }
+    }
+
+    @Test
+    public void testPage1() throws Exception {
+        PageRequest pageRequest = PageRequest.of(1, 3);
+        Page<Object[]> page = loanCreditWayThirdLinkRepository.testPage1(pageRequest);
+
+        long totalElements = page.getTotalElements();
+        int totalPages = page.getTotalPages();
+        System.out.println("totalElements: " + totalElements);
+        System.out.println("totalPages: " + totalPages);
+
+        List<Object[]> content = page.getContent();
+
+        List<SimpleVo> simpleVos = castEntity(content, SimpleVo.class);
+
+
+        for (SimpleVo vo : simpleVos) {
+            System.out.println(vo);
+        }
+    }
+
+    //转换实体类
+    public static <T> List<T> castEntity(List<Object[]> list, Class<T> clazz) throws Exception {
+        List<T> returnList = new ArrayList<>();
+        if(CollectionUtils.isEmpty(list)){
+            return returnList;
+        }
+        Object[] co = list.get(0);
+        Class[] c2 = new Class[co.length];
+        //确定构造方法
+        for (int i = 0; i < co.length; i++) {
+            if(co[i]!=null){
+                c2[i] = co[i].getClass();
+            }else {
+                c2[i]=String.class;
+            }
+        }
+        for (Object[] o : list) {
+            Constructor<T> constructor = clazz.getConstructor(c2);
+            returnList.add(constructor.newInstance(o));
+        }
+        return returnList;
+    }
+
+    @Test
+    public void testUseEntity() {
+        List<User> list = userRepository.testUseEntity("1");
+        list.forEach(ele -> {
+            System.out.println(ele);
+        });
+    }
+
+    @Test
+    public void testInb() {
+        String name = "cc";
+        String status = "1";
+        List<Integer> userTypes = new ArrayList<>();
+        userTypes.add(1);
+        userTypes.add(2);
+        List<User> list = userRepository.testInb(name, status, userTypes);
+        list.forEach(ele -> {
+            System.out.println(ele);
+        });
+    }
+
+    /**
+     * ok
+     */
+    @Test
+    public void testIna() {
+        String name = "cc";
+        String status = "1";
+        List<Integer> userTypes = new ArrayList<>();
+        userTypes.add(1);
+        userTypes.add(2);
+        List<User> list = userRepository.findByNameAndStatusAndUserTypeIn(name, status, userTypes);
+        list.forEach(ele -> {
+            System.out.println(ele);
+        });
+    }
+
+    @Test
+    public void testSort() {
+        List<User> list = userRepository.findByUserType(1, new Sort(Sort.Direction.DESC, "gmtCreate"));
+        list.forEach(ele -> {
+            System.out.println(ele.getName());
+        });
+    }
+
+    @Test
+    public void testNotEqualsAndIsNull() {
+        List<User> users = userRepository.testNotEqualsAndIsNull((byte)3);
+        System.out.println(users.size());
+    }
+
+    @Test
+    public void testNotEquals() {
+        List<User> users = userRepository.testNotEquals((byte)3);
+        System.out.println(users.size());
+    }
+
+    @Test
+    public void testParamNullc() {
+        List<User> users = userRepository.testParamNullc((byte)3);
+        System.out.println(users.size());
+    }
+
+    @Test
+    public void testParamNullb() {
+        List<User> users = userRepository.testParamNullb(null);
+        System.out.println(users.size());
+    }
+
+    @Test
+    public void testParamNulla() {
+        List<User> users = userRepository.testParamNulla((byte)3);
+        System.out.println(users.size());
+    }
+
+    /**
+     * 1. 实体类上未加@DynamicUpdate注解
+     * User user = userRepository.findOne(x)
+     * user.setName("xxx");
+     * userRepository.save(user);
+     *
+     * sql打印如下：
+     * update v_user set gmt_create=?, gmt_modified=?, name=?, password=?, phone=?, status=?, user_type=? where id=?
+     *
+     * 2. 实体类上加@DynamicUpdate注解
+     * User user = userRepository.findOne(x)
+     * user.setName("xxx");
+     * userRepository.save(user);
+     *
+     * sql打印如下：
+     * update v_user set password=? where id=?
+     */
+
+    @Test
+    public void testUpdate2() {
+        String phone = "13611884695";
+        User u = userRepository.findByPhone(phone);
+        if(u == null) {
+            u = new User();
+        }
+        u.setPassword("p1");
+        u.setPhone("13611884695");
+        u.setStatus("7");
+        u.setName("satan111");
+        u.setUserType(9);
+        u.setGmtCreate(new Date());
+        u.setGmtModified(new Date());
+        userRepository.save(u);
+
+    }
+
+    /**
+     * 查出实体后，显式地设置属性为null
+     * 则会执行更新将对应字段置为null。
+     * 如：
+     * user.setName(null);
+     *
+     */
+    @Test
+    public void testUpdate1() {
+        Optional<User> optional = userRepository.findById(2L);
+        User user = optional.get();
+        user.setName("beverly");
+//        user.setPhone("13611884691");
+        user.setStatus("1");
+        user.setPassword(null);
+        userRepository.save(user);
+    }
 
     @Test
     public void testFindByName() {
         String name = "张三";
         List<User> list = userRepository.findByName(name);
         list.forEach(ele -> System.out.println(ele));
-
     }
 
 

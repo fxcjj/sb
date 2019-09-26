@@ -34,6 +34,16 @@ public class LogTestController1 {
             int i = 3/0;
 
         } catch (Exception e) {
+            /**
+             * 2019-09-08 10:01:58,813 INFO (LogTestController1.java:37)------- id:1, e:{}
+             * java.lang.ArithmeticException: / by zero
+             * 	at com.vic.sb03.controller.LogTestController1.test2(LogTestController1.java:34)
+             * 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+             * 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+             * 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+             */
+            log.info("id:{}, e:", 1, e);
+
             log.error("error:{}", e);
         }
         return "ok";
