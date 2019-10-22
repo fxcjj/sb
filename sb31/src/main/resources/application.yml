@@ -1,0 +1,13 @@
+
+# OSS\u5BF9\u8C61\u5B58\u50A8
+oss.enable: true
+oss.access-key-id: LTAIZW2Q7iiZ9oXc
+oss.access-key-secret: ej20avCofLzrt5D8r5BnhP5U8igNP3
+oss.region: oss-cn-shanghai
+oss.endpoint: oss-cn-shanghai.aliyuncs.com
+oss.bucket: phenomenon
+oss.sts-role-arn: acs:ram::1865152571686676:role/aliyunosstokengeneratorrole
+oss.sts-role-session-name: external-username
+oss.sts-policy: "{\"Version\":\"1\",\"Statement\":[{\"Effect\":\"Allow\",\"Action\":[\"oss:*\"],\"Resource\":[\"acs:oss:*:*:*\"]}]}"
+oss.url-public: https://phenomenon.oss-cn-shanghai.aliyuncs.com
+oss.url-private: https://phenomenon.oss-cn-shanghai-internal.aliyuncs.com
