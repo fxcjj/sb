@@ -10,7 +10,7 @@ import java.util.Date;
  * @author 罗利华
  * date: 2019/12/3 19:45
  */
-@Component
+//@Component
 public class ScheduledTask1 {
 
     /**

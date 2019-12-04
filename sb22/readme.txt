@@ -6,6 +6,9 @@ https://www.cnblogs.com/tommyli/p/3760671.html
 5. 自定义线程池
 异步调用来实现不同任务使用不同的线程进行任务执行
 6. 动态添加定时任务
+    6.1 ThreadPoolTaskScheduler
+    6.2 SchedulingConfigurer接口
+7. 集成quartz做定时任务 TODO
 
 Reference
 https://blog.lqdev.cn/2018/08/19/springboot/chapter-twenty-two/
