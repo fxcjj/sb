@@ -17,7 +17,7 @@ public class LogCostInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Exception {
-        System.out.println("preHandle");
+        System.out.println("LogCostInterceptor preHandle");
         start = System.currentTimeMillis();
         //返回 false 则请求中断
         return true;
@@ -25,12 +25,12 @@ public class LogCostInterceptor implements HandlerInterceptor {
 
     @Override
     public void postHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, ModelAndView modelAndView) throws Exception {
-        System.out.println("postHandle");
+        System.out.println("LogCostInterceptor postHandle");
         System.out.println("LogCostInterceptor Execute cost time: " + (System.currentTimeMillis() - start) + "ms");
     }
 
     @Override
     public void afterCompletion(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, Exception e) throws Exception {
-        System.out.println("afterCompletion");
+        System.out.println("LogCostInterceptor afterCompletion");
     }
 }

@@ -21,13 +21,13 @@ public class LogCostFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-        System.out.println("before chain.doFilter(request, response)");
+        System.out.println("LogCostFilter before chain.doFilter");
 
         long start = System.currentTimeMillis();
         chain.doFilter(request, response);
         System.out.println("LogCostFilter Execute cost time: " + (System.currentTimeMillis() - start) + "ms");
 
-        System.out.println("after chain.doFilter(request, response)");
+        System.out.println("LogCostFilter after chain.doFilter");
     }
 
     @Override
