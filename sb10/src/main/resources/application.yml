@@ -5,13 +5,13 @@ server:
 # jwt configuration
 audience:
   # the audience
-  clientId: 123
+  client-id: 123
   # the original string is <i am your dady>
-  base64Secret: aSBhbSB5b3VyIGRhZHk=
+  base64-secret: aSBhbSB5b3VyIGRhZHk=
   # issuer
   name: victor
   # 48 hours
-  expireSecond: 172800
+  expire_second: 172800
 
 # filter switch
 filter:

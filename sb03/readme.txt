@@ -5,6 +5,7 @@ Digest
 2. 查找顺序先resources/config后resources
 3. 声明是一个配置使用@Component或@Configuration
 4. 引入配置文件使用@PropertySource
+    使用.properties或.yml文件配置属性时，可以使用中划线-或者下划线_，例如配置my-name或者my_name，属性为myName是可以注入进来的
 5. @RequestHeader注解和@RequestParam注解的使用
 6. 使用@Value可绑定在配置文件中定义的属性
 7. 使用${random}产生随机int/long/string值

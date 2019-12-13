@@ -15,7 +15,7 @@ import java.util.concurrent.ThreadPoolExecutor;
  * @author 罗利华
  * date: 2019/12/4 17:47
  */
-@Configuration
+//@Configuration
 public class SchedulingConfigurerConfig implements SchedulingConfigurer {
 
     @Override

@@ -6,6 +6,7 @@ Digest
 3. 使用JwtFilter拦截方法，需要配置除登录之外所有接口，不方便！
 
 References
+https://mp.weixin.qq.com/s/NUiFBo0URyacB4BnuS5ntw
 https://segmentfault.com/a/1190000012874052
 https://www.jianshu.com/p/fcc1a6482143?from=timeline
 https://www.jianshu.com/p/af8360b83a9f

@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -49,12 +48,12 @@ public class TestController {
 
     @RequestMapping("/config")
     public String config() {
-        return configBean.getName() + configBean.getWant() + ", " + configBean.getHobby() + ", " + configBean.getPriceMap();
+        return configBean.getMyName() + configBean.getWant() + ", " + configBean.getHobby() + ", " + configBean.getPriceMap();
     }
 
     @RequestMapping("/shaver")
     public String shaver() {
-        return shaver.getName() + ", " + shaver.getSize();
+        return shaver.getShaverName() + ", " + shaver.getSize();
     }
 
 
