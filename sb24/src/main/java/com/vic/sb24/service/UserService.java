@@ -22,7 +22,6 @@ public class UserService {
     @Autowired
     UserRepository userRepository;
 
-
     /**
      * 插入或更新
      * @param user
@@ -33,6 +32,7 @@ public class UserService {
         user.setGmtCreated(new Date());
         user.setGmtModified(new Date());
 
+        // 第1次时
         User dbUser = userRepository.findByPhone(user.getPhone());
         // 多个线程未查询到dbUser，都到这里了，就会出现插入多条相同记录
 //        Thread.sleep(100);
