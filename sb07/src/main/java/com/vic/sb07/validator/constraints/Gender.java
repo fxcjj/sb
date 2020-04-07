@@ -15,7 +15,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 /**
  * 性别校验
- * @author 罗利华
+ * @author Victor
  * date: 2019/5/8 18:59
  */
 @Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER })

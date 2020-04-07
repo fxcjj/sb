@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.validation.beanvalidation.MethodValidationPostProcessor;
 
 /**
- * @author 罗利华
+ * @author Victor
  * date: 2019/5/11 12:33
  */
 //@Configuration

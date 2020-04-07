@@ -20,7 +20,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * 校验重复提交切面
- * @author 罗利华
+ * @author Victor
  * date: 2020/3/30 16:18
  */
 @Slf4j

@@ -3,7 +3,7 @@ package com.vic.sb13.entity;
 import java.io.Serializable;
 
 /**
- * @author 罗利华
+ * @author Victor
  * date: 2019/7/26 17:01
  */
 public class User implements Serializable {

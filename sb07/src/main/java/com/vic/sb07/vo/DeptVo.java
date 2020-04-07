@@ -9,7 +9,7 @@ import javax.validation.constraints.Null;
 
 /**
  * 部门vo
- * @author 罗利华
+ * @author Victor
  * date: 2019/5/9 17:21
  */
 @Data

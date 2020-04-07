@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * note/spring/XMapping中headers和params与RequestHeader和RequestParam.txt
  *
- * @author 罗利华
+ * @author Victor
  * date: 2019/4/16 17:23
  */
 @RestController

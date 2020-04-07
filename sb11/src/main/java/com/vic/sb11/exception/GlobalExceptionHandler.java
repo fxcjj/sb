@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * 处理全局异常
- * @author 罗利华
+ * @author Victor
  * date: 2019/6/27 19:24
  */
 @CrossOrigin

@@ -9,7 +9,7 @@ import java.lang.annotation.Target;
  * 登录校验
  * 标记在类上，拦截所有的方法
  * 标记在方法上，拦截所标记的方法
- * @author 罗利华
+ * @author Victor
  * date: 2019/7/21 12:00
  */
 @Target({ElementType.METHOD, ElementType.TYPE})

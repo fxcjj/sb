@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * 监听器配置
- * @author 罗利华
+ * @author Victor
  * date: 2019/5/6 17:20
  */
 @Configuration

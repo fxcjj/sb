@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 /**
- * @author 罗利华
+ * @author Victor
  * date: 2019/9/18 11:23
  */
 public class SimpleVo {

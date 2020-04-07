@@ -9,7 +9,7 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 
 /**
- * @author 罗利华
+ * @author Victor
  * date: 2019/5/13 11:43
  */
 @Validated

@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * @author 罗利华
+ * @author Victor
  * date: 2019/4/16 16:03
  */
 @RestController //@Controller + ResponseBody 默认返回json格式数据

@@ -12,7 +12,7 @@ import java.util.Date;
 
 /**
  * 部门请求对象
- * @author 罗利华
+ * @author Victor
  * date: 2019/5/16 16:19
  */
 @ApiModel("部门请求对象参数")

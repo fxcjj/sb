@@ -4,7 +4,7 @@ import java.lang.annotation.*;
 
 /**
  * 校验重复提交
- * @author 罗利华
+ * @author Victor
  * date: 2020/3/30 16:16
  */
 @Target({ElementType.METHOD})

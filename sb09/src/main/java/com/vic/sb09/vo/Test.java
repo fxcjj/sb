@@ -1,7 +1,7 @@
 package com.vic.sb09.vo;
 
 /**
- * @author 罗利华
+ * @author Victor
  * date: 2019/8/28 14:23
  */
 public class Test {

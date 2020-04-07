@@ -5,7 +5,7 @@ import ch.qos.logback.core.filter.Filter;
 import ch.qos.logback.core.spi.FilterReply;
 
 /**
- * @author 罗利华
+ * @author Victor
  * date: 2019/4/29 18:54
  */
 public class MyFilter extends Filter<ILoggingEvent> {

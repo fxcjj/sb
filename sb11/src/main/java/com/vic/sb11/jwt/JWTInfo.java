@@ -5,7 +5,7 @@ import lombok.Data;
 
 /**
  * 用户信息
- * @author 罗利华
+ * @author Victor
  * date: 2019/7/22 09:20
  */
 @Data

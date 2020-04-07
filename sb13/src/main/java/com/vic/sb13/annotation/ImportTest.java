@@ -5,7 +5,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 /**
  * Import注解使用
  * https://segmentfault.com/a/1190000011068471
- * @author 罗利华
+ * @author Victor
  * date: 2019/7/25 17:24
  */
 public class ImportTest {

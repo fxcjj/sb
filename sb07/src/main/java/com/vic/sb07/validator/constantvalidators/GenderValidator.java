@@ -8,7 +8,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * @author 罗利华
+ * @author Victor
  * date: 2019/5/8 19:03
  */
 public class GenderValidator implements ConstraintValidator<Gender, Integer> {

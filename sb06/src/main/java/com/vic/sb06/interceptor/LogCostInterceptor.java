@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * 耗时拦截器
- * @author 罗利华
+ * @author Victor
  * date: 2019/5/6 16:56
  */
 public class LogCostInterceptor implements HandlerInterceptor {

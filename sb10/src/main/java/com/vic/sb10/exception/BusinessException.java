@@ -3,7 +3,7 @@ package com.vic.sb10.exception;
 import com.vic.sb10.enums.ResultEnum;
 
 /**
- * @author 罗利华
+ * @author Victor
  * date: 2019/6/27 18:59
  */
 public class BusinessException extends RuntimeException {

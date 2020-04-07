@@ -5,7 +5,7 @@ import com.vic.sb10.resp.ResponseResult;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * @author 罗利华
+ * @author Victor
  * date: 2019/5/22 16:23
  */
 @RestController

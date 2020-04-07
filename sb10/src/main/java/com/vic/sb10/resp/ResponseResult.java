@@ -4,7 +4,7 @@ import com.vic.sb10.enums.ResultEnum;
 import lombok.Data;
 
 /**
- * @author 罗利华
+ * @author Victor
  * date: 2019/4/28 15:47
  */
 @Data

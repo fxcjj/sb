@@ -3,7 +3,7 @@ package com.vic.sb03.result;
 import lombok.AllArgsConstructor;
 
 /**
- * @author 罗利华
+ * @author Victor
  * date: 2019/4/28 15:47
  */
 @AllArgsConstructor
