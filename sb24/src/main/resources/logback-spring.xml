@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration scan="true" scanPeriod="20 seconds" debug="false">
+
+    <contextName>logback-vic</contextName>
+
+    <property name="log.dir" value="d:\\logs" />
+
+    <!-- 控制台输出 -->
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <!-- %d日期，%p日志级别，%file文件名，%line行号，%m输出的信息，%n换行 -->
+            <pattern>%d %p (%file:%line\)------- %m%n</pattern>
+            <!-- 控制台指定编码 -->
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <!-- 文件输出 -->
+    <appender name="rollingFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <encoder>
+            <!-- %d日期，%p日志级别，%file文件名，%line行号，%m输出的信息，%n换行 -->
+            <pattern>%d %p (%file:%line\)- %m%n</pattern>
+            <!-- 控制台指定编码 -->
+            <charset>UTF-8</charset>
+        </encoder>
+
+        <file>${log.dir}/logFile.log</file>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!-- rollover daily -->
+            <fileNamePattern>mylog-%d{yyyy-MM-dd}.%i.txt</fileNamePattern>
+            <!-- each file should be at most 100MB, if exceeded will be deleted, keep 60 days worth of history, but at most 20GB -->
+            <maxFileSize>5MB</maxFileSize>
+            <maxHistory>20</maxHistory>
+            <totalSizeCap>5GB</totalSizeCap>
+        </rollingPolicy>
+
+    </appender>
+
+    <!-- 顶层配置,当某个路径的level为info时,将日志打印到console和rollingFile -->
+    <root level="info">
+        <appender-ref ref="console" />
+        <appender-ref ref="rollingFile" />
+    </root>
+
+    <logger name="com.vic" level="info">
+        <!--<appender-ref ref="rollingFile" />-->
+    </logger>
+
+</configuration>
