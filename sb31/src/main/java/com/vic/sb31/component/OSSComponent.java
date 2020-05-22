@@ -30,7 +30,7 @@ import java.util.Map;
 
 /**
  * OSS组件
- * @author 罗利华
+ * @author Victor
  * date: 2019/10/22 14:59
  */
 @Slf4j

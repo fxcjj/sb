@@ -1,12 +1,7 @@
 package com.vic.sb03.controller;
 
-import com.vic.sb03.exception.PermissionException;
-import com.vic.sb03.result.ExceptionEnum;
-import com.vic.sb03.result.ResponseMessage;
-import com.vic.sb03.result.ResponseResult;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
