@@ -110,6 +110,7 @@ public interface UserRepository extends JpaRepository<User, Long>, JpaSpecificat
 
     /**
      * 两种in的写法
+     * 第一种in的写法
      * @param name
      * @param status
      * @param userTypes
@@ -117,6 +118,13 @@ public interface UserRepository extends JpaRepository<User, Long>, JpaSpecificat
      */
     List<User> findByNameAndStatusAndUserTypeIn(String name, String status, List<Integer> userTypes);
 
+    /**
+     * 第二种in的写法
+     * @param name
+     * @param status
+     * @param userTypes
+     * @return
+     */
     @Query(value = "select * from v_user where delete_flag = 1 and name = :name and status = :status and user_type in(:userTypes) limit 1", nativeQuery = true)
     List<User> testInb(String name, String status, List<Integer> userTypes);
 //    List<User> testInb(@Param("name") String name, @Param("status") String status, @Param("userTypes") List<Integer> userTypes);
