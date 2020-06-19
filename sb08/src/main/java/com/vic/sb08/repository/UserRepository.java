@@ -138,5 +138,10 @@ public interface UserRepository extends JpaRepository<User, Long>, JpaSpecificat
 //    List<User> findTopByUserTypeAndStatus();
 
 
+    User findFirstByNameAndPasswordOrderByGmtCreatedAsc(String name, String phone);
+
+    User findFirstByNameAndPasswordOrderByGmtCreatedDesc(String name, String phone);
+
+
 
 }

@@ -27,7 +27,6 @@ public class ApiResult {
      * 过期
      *
      * @param message:
-     * @return: com.zhengqing.modules.common.dto.output.ApiResult
      */
     public static ApiResult expired(String message) {
         return new ApiResult(ResultCode.UN_LOGIN.getCode(), message, null);
@@ -42,7 +41,6 @@ public class ApiResult {
      *
      * @param code
      * @param message:
-     * @return: com.zhengqing.modules.common.dto.output.ApiResult
      */
     public static ApiResult fail(Integer code, String message) {
         return new ApiResult(code, message, null);
@@ -77,7 +75,6 @@ public class ApiResult {
      * @param code：验证码
      * @param message：返回消息内容
      * @param data：返回数据
-     * @return: com.zhengqing.modules.common.dto.output.ApiResult
      */
     public static ApiResult ok(Integer code, String message, Object data) {
         return new ApiResult(code, message, data);

@@ -56,7 +56,7 @@ public class User implements Serializable {
     /**
      * 创建时间
      */
-    private Date gmtCreate;
+    private Date gmtCreated;
 
     /**
      * 修改时间

@@ -10,7 +10,7 @@ import java.lang.annotation.*;
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.METHOD})
-public @interface Log {
+public @interface MyLog {
 
     /**
      * 描述
@@ -19,6 +19,10 @@ public @interface Log {
     @AliasFor("desc")
     String value() default "";
 
+    /**
+     * 描述
+     * @return
+     */
     @AliasFor("value")
     String desc() default "";
 

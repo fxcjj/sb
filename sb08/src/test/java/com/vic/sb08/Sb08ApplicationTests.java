@@ -33,6 +33,14 @@ public class Sb08ApplicationTests {
     @Autowired
     LoanCreditWayThirdLinkRepository loanCreditWayThirdLinkRepository;
 
+    @Test
+    public void testFirst() {
+        User martin = userRepository.findFirstByNameAndPasswordOrderByGmtCreatedAsc("martin", "123");
+        System.out.println(martin);
+
+        User martin1 = userRepository.findFirstByNameAndPasswordOrderByGmtCreatedDesc("martin", "123");
+        System.out.println(martin1);
+    }
 
     @Test
     public void testCustomeVo() {
@@ -204,7 +212,7 @@ public class Sb08ApplicationTests {
         u.setStatus("7");
         u.setName("satan111");
         u.setUserType(9);
-        u.setGmtCreate(new Date());
+        u.setGmtCreated(new Date());
         u.setGmtModified(new Date());
         userRepository.save(u);
 

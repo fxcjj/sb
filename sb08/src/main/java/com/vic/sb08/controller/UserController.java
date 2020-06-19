@@ -33,7 +33,7 @@ public class UserController {
 
         for(int i = 0; i < 30; i++) {
             User u = new User();
-            u.setGmtCreate(new Date());
+            u.setGmtCreated(new Date());
             u.setGmtModified(new Date());
             u.setName("name"+i);
             u.setPassword("p"+i);
