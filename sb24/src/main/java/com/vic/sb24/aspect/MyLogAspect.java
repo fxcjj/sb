@@ -1,5 +1,6 @@
 package com.vic.sb24.aspect;
 
+import com.alibaba.fastjson.JSON;
 import com.vic.sb24.annotation.MyLog;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -19,6 +20,8 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 日志切面
@@ -48,10 +51,22 @@ public class MyLogAspect {
         log.info("开始计时: {}  URI: {}", new Date(), uri);
 
         // 访问目标方法的参数 可动态改变参数值
+        // 参数值数组
         Object[] args = joinPoint.getArgs();
 
         // 方法签名对象
         Signature signature = joinPoint.getSignature();
+
+        MethodSignature methodSignature = (MethodSignature) signature;
+        // 最关键的一步:通过这获取到方法的所有参数名称的字符串数组
+        String[] parameterNames = methodSignature.getParameterNames();
+
+        Map<String, String> paramMap = new HashMap<>();
+        for (int i = 0; i < parameterNames.length; i++) {
+            paramMap.put(parameterNames[i], JSON.toJSONString(args[i]));
+        }
+
+        System.out.println(paramMap);
 
         // 获取方法名
         String methodName = signature.getName();
