@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Aspect
 @Component
-public class Aop1 {
+public class Aop11 {
 
     /**
      * 打印结果：
@@ -36,27 +36,26 @@ public class Aop1 {
 
 //    @Before("pointCut()")
 //    public void before() {
-//        System.out.println("Aop1 before...");
+//        System.out.println("Aop11 before...");
 //    }
 
 //    @After("pointCut()")
 //    public void after(){
-//        System.out.println("Aop1 after...");
+//        System.out.println("Aop11 after...");
 //    }
 
     @Around("pointCut() && @annotation(chargingApi)")
     public Object around(ProceedingJoinPoint joinPoint, ChargingApi chargingApi) throws Throwable {
-        System.out.println("Aop1 around before..." + chargingApi);
+        System.out.println("Aop11 around before..." + chargingApi);
         // 执行完成目标方法
+        Object result = joinPoint.proceed();
+        System.out.println("Aop11 around after...");
         try {
-            Object result = joinPoint.proceed();
-            System.out.println("Aop1 around after...");
-            return result;
+//            int a = 34/0;
         } catch (Exception e) {
-            log.error("异常：", e);
-            return "error";
+            throw e;
         }
-
+        return result;
     }
 
 }

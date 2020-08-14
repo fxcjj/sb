@@ -13,6 +13,16 @@
 4. 解决高并发下幂等性问题
     a) UserController
     b) 参考note\concurrency\idempotence.txt
+5. 同一个方法两个注解
+    a) ChargingApi 注解类
+    b) Aop1Controller 测试controller
+    c) Aop1,Aop11两个切面
+    d) 当开启了Aop1,Aop11时，打印如下：
+    Aop1 around before...@com.vic.sb24.annotation.ChargingApi(ignore=false, extraInfo=haha2)
+    Aop11 around before...@com.vic.sb24.annotation.ChargingApi(ignore=false, extraInfo=haha2)
+    Aop1Controller 执行结果...test2
+    Aop11 around after...
+    Aop1 around after...
 
 Reference
 https://blog.csdn.net/u010502101/article/details/78823056
