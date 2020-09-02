@@ -1,18 +1,12 @@
 package com.vic.sb08;
 
 import com.vic.sb08.entity.User;
-import com.vic.sb08.repository.LoanCreditWayThirdLinkRepository;
 import com.vic.sb08.repository.UserRepository;
-import com.vic.sb08.vo.LoanCreditWayThirdLinkVo;
 import com.vic.sb08.vo.SimpleUserVo;
-import com.vic.sb08.vo.SimpleVo;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.util.CollectionUtils;
@@ -30,9 +24,6 @@ public class Sb08ApplicationTests {
     @Autowired
     UserRepository userRepository;
 
-    @Autowired
-    LoanCreditWayThirdLinkRepository loanCreditWayThirdLinkRepository;
-
     @Test
     public void testFirst() {
         User martin = userRepository.findFirstByNameAndPasswordOrderByGmtCreatedAsc("martin", "123");
@@ -46,42 +37,6 @@ public class Sb08ApplicationTests {
     public void testCustomeVo() {
         SimpleUserVo vo = userRepository.testCustomeVo(1L);
         System.out.println(vo);
-    }
-
-    @Test
-    public void testPage2() {
-        PageRequest pageRequest = PageRequest.of(1, 3);
-        Page<LoanCreditWayThirdLinkVo> page = loanCreditWayThirdLinkRepository.testPage2(pageRequest);
-
-        long totalElements = page.getTotalElements();
-        int totalPages = page.getTotalPages();
-        System.out.println("totalElements: " + totalElements);
-        System.out.println("totalPages: " + totalPages);
-
-        List<LoanCreditWayThirdLinkVo> content = page.getContent();
-        for (Object vo : content) {
-            System.out.println(vo);
-        }
-    }
-
-    @Test
-    public void testPage1() throws Exception {
-        PageRequest pageRequest = PageRequest.of(1, 3);
-        Page<Object[]> page = loanCreditWayThirdLinkRepository.testPage1(pageRequest);
-
-        long totalElements = page.getTotalElements();
-        int totalPages = page.getTotalPages();
-        System.out.println("totalElements: " + totalElements);
-        System.out.println("totalPages: " + totalPages);
-
-        List<Object[]> content = page.getContent();
-
-        List<SimpleVo> simpleVos = castEntity(content, SimpleVo.class);
-
-
-        for (SimpleVo vo : simpleVos) {
-            System.out.println(vo);
-        }
     }
 
     //转换实体类
