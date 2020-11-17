@@ -5,10 +5,13 @@ import com.vic.sb08.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 import java.util.Random;
 
 /**
@@ -28,7 +31,7 @@ public class UserController {
         return "ok";
     }
 
-    @PostMapping("saveUser")
+    @GetMapping("mock")
     public String saveUser(/*@RequestBody User user*/){
 
         for(int i = 0; i < 30; i++) {
@@ -52,6 +55,12 @@ public class UserController {
     @GetMapping("findByName")
     public List<User> findByName(String name){
         return userRepository.findByName(name);
+    }
+
+    @GetMapping("findById")
+    public User findById(Long id){
+        Optional<User> byId = userRepository.findById(id);
+        return byId.get();
     }
 
     @GetMapping("findByNameLike")
