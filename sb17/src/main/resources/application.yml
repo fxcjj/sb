@@ -1,0 +1,18 @@
+server:
+  port: 1917
+spring:
+  boot:
+    admin:
+      client:
+        url: http://localhost:1916 # \u8981\u6CE8\u518C\u5230SBA\u7684\u5730\u5740
+  application:
+    name: sb17(admin-client)
+# endpoint
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*" # \u66B4\u9732\u6240\u6709\u7AEF\u70B9
+  endpoint:
+    health:
+      show-details: always # \u663E\u793A\u5065\u5EB7\u5177\u4F53\u4FE1\u606F\uFF0C\u9ED8\u8BA4\u4E0D\u4F1A\u663E\u793A\u8BE6\u7EC6\u4FE1\u606F

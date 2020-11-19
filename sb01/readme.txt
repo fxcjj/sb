@@ -19,6 +19,8 @@
  # pom.xml 文件是Maven构建的基础，里面包含了我们所依赖JAR和Plugin的信息
 - pom
 
+2. spring boot, spring cloud版本说明
+https://www.jianshu.com/p/99c45499fb6e
 
 References
 //SpringBoot | 第一章：第一个SpringBoot应用
