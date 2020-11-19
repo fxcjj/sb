@@ -28,11 +28,13 @@ public class ConfigBean {
 
     private String myName;
 
-    private String want;
+    private List<String> hobby1;
+    private List<String> hobby2;
 
-    private List<String> hobby;
+    private String[] array1;
 
-    private Map<String, String> priceMap;
+    private Map<String, String> priceMap1;
+    private Map<String, String> priceMap2;
 
     @PostConstruct
     public void init() {

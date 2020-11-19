@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties(prefix = "shaver")
 /*
 1. 此注解默认在resources目录下找指定文件，找不到报错
-2. 如果将此文件放在resources/conf目录，需要配置classpath:config/shaver.properties
+2. 如果将对应properties文件放在resources/conf目录，需要配置classpath:config/shaver.properties
  */
 @PropertySource("classpath:shaver.properties")
 public class Shaver {
