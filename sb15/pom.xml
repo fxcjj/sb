@@ -59,7 +59,7 @@
 	<build>
 		<plugins>
 
-			<!-- 在application.yml中添加端点时配置这个，分隔符使用@ -->
+			<!-- 在application.yml中添加端点时配置这个，分隔符使用@ 不需要！！！-->
 			<!--<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-resources-plugin</artifactId>
