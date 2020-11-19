@@ -59,8 +59,8 @@
 	<build>
 		<plugins>
 
-			<!-- 在application.yml中使用自定义端点时配置这个 -->
-			<plugin>
+			<!-- 在application.yml中添加端点时配置这个，分隔符使用@ -->
+			<!--<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-resources-plugin</artifactId>
 				<configuration>
@@ -69,7 +69,7 @@
 					</delimiters>
 					<useDefaultDelimiters>false</useDefaultDelimiters>
 				</configuration>
-			</plugin>
+			</plugin>-->
 
 			<plugin>
 				<groupId>org.springframework.boot</groupId>

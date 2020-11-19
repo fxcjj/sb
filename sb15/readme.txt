@@ -24,5 +24,8 @@ spring:
       roles: ADMIN
 配置以上后，当访问 http://localhost:2011/haha 跳转到登录页面
 
+4. 在application.yml中添加info端点内容
+注意：当前spring boot版本为 2.1.6.RELEASE
+
 参考
 https://blog.csdn.net/weixin_43353498/article/details/89226101

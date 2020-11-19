@@ -16,3 +16,21 @@ management:
   endpoint:
     health:
       show-details: always # \u663E\u793A\u5065\u5EB7\u5177\u4F53\u4FE1\u606F\uFF0C\u9ED8\u8BA4\u4E0D\u4F1A\u663E\u793A\u8BE6\u7EC6\u4FE1\u606F
+# \u6DFB\u52A0info\u7AEF\u70B9\u5185\u5BB9
+info:
+  app:
+    groupId:
+      @project.groupId@
+    artifactId:
+      @project.artifactId@
+    version:
+      @project.version@
+    name:
+      @project.name@
+    description:
+      @project.description@
+    encoding:
+      @project.build.sourceEncoding@
+    java:
+      source: "@java.version@"
+      target: "@java.version@"
