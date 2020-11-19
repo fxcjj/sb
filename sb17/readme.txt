@@ -29,9 +29,7 @@ spring:
 
 4. SecurityPermitAllConfig
 安全性配置
-
 5. 启动admin服务和admin client服务，登录admin地址，即可看到效果
-
 6. 此项目为直接注册方式，另外有注册中心方式（zookeeper,Eureka）
-
-7. 修改了配置后，重启此项目即可，不用重启SBA
+7. 修改了此项目的配置后，重启此项目即可，不用重启SBA
+8. eureka集成SBA参数项目fxcjj/exotic-harpoon
