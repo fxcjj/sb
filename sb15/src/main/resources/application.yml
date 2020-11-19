@@ -10,7 +10,7 @@ management:
         exclude: # \u516C\u5F00\u6240\u6709\u7AEF\u70B9\uFF0C\u4F46\u662F\u8981\u6392\u9664loggers\u548Cenv\u7AEF\u70B9
           - loggers
           - env
-      base-path: /haha # \u8C03\u6574\u7AEF\u70B9\u7684\u524D\u7F00\u8DEF\u5F84\u4E3A/haha, http://localhost:1915/haha
+      base-path: /haha # \u8C03\u6574\u7AEF\u70B9\u7684\u524D\u7F00\u8DEF\u5F84\u4E3A/haha, http://localhost:1915/haha\uFF0C\u8BBF\u95EEendpoint\u4F7F\u7528http://localhost:${management.server.port}/haha \u5730\u5740
       path-mapping:
         health: healtha # \u5C06\u7AEF\u70B9\u6620\u5C04\u5230\u4E0D\u540C\u7684\u8DEF\u5F84\uFF0C\u5F53\u6620\u5C04\u540E\u539F\u6765\u7AEF\u70B9ID\u4E0D\u53EF\u8BBF\u95EE
     enabled-by-default: true # \u8BBE\u7F6E\u6240\u6709\u7AEF\u70B9\u7684\u5F00\u542F\u9ED8\u8BA4\u503C\uFF0C\u4E3Afalse\u65F6\u5565\u4E5F\u6CA1\u6709\u4E86
@@ -19,21 +19,24 @@ management:
       show-details: always # \u663E\u793A\u5065\u5EB7\u5177\u4F53\u4FE1\u606F\uFF0C\u9ED8\u8BA4\u4E0D\u4F1A\u663E\u793A\u8BE6\u7EC6\u4FE1\u606F
     httptrace:
       enabled: true # \u542F\u7528httptrace\u7AEF\u70B9\uFF0C\u4E3Afalse\u65F6\uFF0Chttp://localhost:1915/haha\u76EE\u5F55\u4E0B\u4E0D\u8FD4\u56DEhttptrace
-  #malware: # \u81EA\u5B9A\u4E49malware\u7AEF\u70B9\u67E5\u770B\u5E94\u7528\u76F8\u5173\u7684\u4FE1\u606F \u6CA1\u6709\u5B9E\u9A8C\u51FA\u6765\uFF1F
-  #  encoding:
-  #    @project.build.sourceEncoding@
-  #  traget:
-  #    @java.version@
-  #  name:
-  #    @project.name@
-  #  description:
-  #    @project.description@
   server:
     port: 2011 # \u76D1\u63A7\u7AEF\u53E3\u53F7 Management endpoint HTTP port(uses the same port as the application by default)
-
 spring:
   security: # http\u5B89\u5168\u673A\u5236
     user:
       name: vic
       password: vic
       roles: ADMIN
+# \u6DFB\u52A0info\u7AEF\u70B9\u5185\u5BB9
+info:
+  encoding:
+    @project.build.sourceEncoding@
+  traget:
+    @java.version@
+  name:
+    @project.name@
+  description:
+    @project.description@
+#malware: # \u81EA\u5B9A\u4E49malware\u7AEF\u70B9, \u8C8C\u4F3C\u4E0D\u652F\u6301\u8FD9\u79CD\u5199\u6CD5
+#  encoding:
+#    @project.build.sourceEncoding@
