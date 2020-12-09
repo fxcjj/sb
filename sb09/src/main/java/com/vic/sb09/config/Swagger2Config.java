@@ -1,5 +1,6 @@
 package com.vic.sb09.config;
 
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -37,7 +38,8 @@ public class Swagger2Config {
                 // 是否开启
                 .enable(swagger2Enabled).select()
                 // 扫描的路径包
-                .apis(RequestHandlerSelectors.basePackage("com.vic.sb09")) ////多路径扫描，之间用逗号分隔
+//        RequestHandlerSelectors.withClassAnnotation(ApiOperation.class)
+                .apis(RequestHandlerSelectors.basePackage("com.vic.sb09")) // 多路径扫描，之间用逗号分隔
                 // 指定路径处理PathSelectors.any()代表所有的路径
                 .paths(PathSelectors.any()).build().pathMapping("/");
     }
