@@ -15,4 +15,19 @@ audience:
 
 # filter switch
 filter:
-  switch: true
+  switch: false
+
+custom:
+# 对象集合
+  students[0]:
+    name: victor
+    age: 18
+  students[1]:
+    name: justin
+    age: 19
+  studentList:
+    - name: diana
+      age: 20
+    - name: july
+      age: 21
+

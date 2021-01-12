@@ -1,6 +1,7 @@
 package com.vic.sb10.controller;
 
 import com.vic.sb10.config.Audience;
+import com.vic.sb10.config.CustomConfig;
 import com.vic.sb10.entity.User;
 import com.vic.sb10.enums.ResultEnum;
 import com.vic.sb10.exception.BusinessException;
@@ -26,6 +27,14 @@ public class UserController extends BaseController {
 
     @Autowired
     private Audience audience;
+
+    @Autowired
+    private CustomConfig customConfig;
+
+    @GetMapping("replenish")
+    public CustomConfig replenish() {
+        return customConfig;
+    }
 
     @GetMapping("beam")
     public String beam() {

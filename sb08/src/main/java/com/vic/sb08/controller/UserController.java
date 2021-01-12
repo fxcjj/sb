@@ -40,7 +40,7 @@ public class UserController {
             u.setGmtModified(new Date());
             u.setName("name"+i);
             u.setPassword("p"+i);
-            u.setStatus("1");
+            u.setStatus(1);
             u.setPhone("phone"+i);
             int random = new Random().nextInt(20);
             if(random < 26)

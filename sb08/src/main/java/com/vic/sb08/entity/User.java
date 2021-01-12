@@ -44,14 +44,14 @@ public class User implements Serializable {
     private String phone;
 
     /**
-     * 用户类型
+     * 用户类型 1普通用户 2管理员
      */
     private Integer userType;
 
     /**
      * 状态 1启用 0 停用
      */
-    private String status;
+    private Integer status;
 
     /**
      * 创建时间

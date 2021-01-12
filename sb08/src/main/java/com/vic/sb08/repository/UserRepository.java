@@ -131,7 +131,7 @@ public interface UserRepository extends JpaRepository<User, Long>, JpaSpecificat
 
 
     @Query("select u from User u where u.status = ?1")
-    List<User> testUseEntity(String status);
+    List<User> testUseEntity(Integer status);
 
     @Query("select new com.vic.sb08.vo.SimpleUserVo(u.id, u.name) from User u where u.id = ?1")
     SimpleUserVo testCustomeVo(Long id);

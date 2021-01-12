@@ -64,7 +64,7 @@ public class Sb08ApplicationTests {
 
     @Test
     public void testUseEntity() {
-        List<User> list = userRepository.testUseEntity("1");
+        List<User> list = userRepository.testUseEntity(1);
         list.forEach(ele -> {
             System.out.println(ele);
         });
@@ -164,7 +164,7 @@ public class Sb08ApplicationTests {
         }
         u.setPassword("p1");
         u.setPhone("13611884695");
-        u.setStatus("7");
+        u.setStatus(7);
         u.setName("satan111");
         u.setUserType(9);
         u.setGmtCreated(new Date());
@@ -185,8 +185,8 @@ public class Sb08ApplicationTests {
         Optional<User> optional = userRepository.findById(2L);
         User user = optional.get();
         user.setName("beverly");
-//        user.setPhone("13611884691");
-        user.setStatus("1");
+        user.setPhone("13611884691");
+        user.setStatus(1);
         user.setPassword(null);
         userRepository.save(user);
     }
@@ -198,6 +198,18 @@ public class Sb08ApplicationTests {
         list.forEach(ele -> System.out.println(ele));
     }
 
+
+    @Test
+    public void testInsert1() {
+        User u = new User();
+        u.setName("victor");
+        u.setPassword("123");
+        u.setPhone("123611881818");
+        u.setStatus(1);
+        u.setUserType(1);
+        u.setGmtCreated(new Date());
+        userRepository.save(u);
+    }
 
     @Test
     public void testInsert() {
