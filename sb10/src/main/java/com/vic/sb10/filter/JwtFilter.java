@@ -67,13 +67,13 @@ public class JwtFilter extends GenericFilterBean {
             final String token = authHeader.substring(7);
 
             try {
-                if(audience == null){
+                if(audience == null) {
                     BeanFactory factory = WebApplicationContextUtils.getRequiredWebApplicationContext(request.getServletContext());
                     audience = (Audience) factory.getBean("audience");
                 }
                 // 验证jwt
                 final Claims claims = JwtHelper.parseJWT(token, audience.getBase64Secret());
-                if(claims == null){
+                if(claims == null) {
                     throw new BusinessException(ResultEnum.LOGIN_ERROR);
                 }
                 request.setAttribute("claims", claims);

@@ -25,6 +25,20 @@ public class Sb08ApplicationTests {
     UserRepository userRepository;
 
     @Test
+    public void testExist() {
+        Boolean aBoolean = userRepository.existsByPhoneEquals("12361188181B");
+        System.out.println(aBoolean);
+
+
+        boolean b = userRepository.existsByPhone("12361188181c");
+        System.out.println(b);
+
+
+
+    }
+
+
+    @Test
     public void testFirst() {
         User martin = userRepository.findFirstByNameAndPasswordOrderByGmtCreatedAsc("martin", "123");
         System.out.println(martin);

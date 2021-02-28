@@ -18,13 +18,14 @@ filter:
   switch: false
 
 custom:
-# 对象集合
+  # 对象集合，方式一
   students[0]:
     name: victor
     age: 18
   students[1]:
     name: justin
     age: 19
+  # 对象集合，方式二
   studentList:
     - name: diana
       age: 20

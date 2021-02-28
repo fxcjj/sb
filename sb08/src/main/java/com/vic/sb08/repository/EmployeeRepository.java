@@ -17,7 +17,7 @@ import java.util.List;
  * date: 2019/5/13 19:12
  */
 
-public interface UserRepository extends JpaRepository<User, Long>, JpaSpecificationExecutor<User> {
+public interface EmployeeRepository extends JpaRepository<User, Long>, JpaSpecificationExecutor<User> {
 
     /**
      * 通过用户名查询
