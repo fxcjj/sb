@@ -1,4 +1,4 @@
-package com.vic.sb35.entity;
+package com.vic.sb40.entity;
 
 public class User {
     private Long id;

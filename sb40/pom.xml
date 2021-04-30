@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.vic</groupId>
-    <artifactId>sb35</artifactId>
+    <artifactId>sb40</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>sb35</name>
+    <name>sb40</name>
     <description>Demo project for Spring Boot</description>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
