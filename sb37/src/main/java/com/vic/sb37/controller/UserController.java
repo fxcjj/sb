@@ -1,7 +1,7 @@
-package com.vic.sb35.controller;
+package com.vic.sb37.controller;
 
-import com.vic.sb35.entity.User;
-import com.vic.sb35.service.UserService;
+import com.vic.sb37.entity.User;
+import com.vic.sb37.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;

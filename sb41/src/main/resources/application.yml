@@ -1,0 +1,85 @@
+
+spring:
+  # 连接池的补充配置，应用到上面所有数据源中
+  datasource:
+    druid:
+      # 主数据源
+      master:
+        username: root
+        password: root
+        jdbc-url: jdbc:mysql://localhost:3306/sb40_01?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+        driver-class-name: com.mysql.jdbc.Driver
+#        type: com.alibaba.druid.pool.DruidDataSource
+        # 初始化连接个数，init方法或第一次getConnection时
+        initialSize: 5
+        # 最小连接数量
+        minIdle: 5
+        # 最大连接数量
+        maxActive: 20
+        # 获取连接时最大等待时间，单位毫秒
+        maxWait: 60000
+        # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+        timeBetweenEvictionRunsMillis: 60000
+        # 配置一个连接在池中最小生存的时间，单位是毫秒
+        minEvictableIdleTimeMillis: 300000
+        # 用来检测连接是否有效的sql
+        validationQuery: SELECT 1 FROM DUAL
+        # 建议配置为true，不影响性能，并且保证安全性。申请连接的时候检测，如果空闲时间大于timeBetweenEvictionRunsMillis，执行validationQuery检测连接是否有效。
+        testWhileIdle: true
+        # 申请连接时执行validationQuery检测连接是否有效，做了这个会降低性能
+        testOnBorrow: false
+        # 归还连接时执行validationQuery检测连接是否有效，做了这个会降低性能
+        testOnReturn: false
+        # 打开PSCache，并且指定每个连接上PSCache的大小
+        poolPreparedStatements: true
+        maxPoolPreparedStatementPerConnectionSize: 20
+        # 配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+        filters: stat,wall,log4j
+        # 通过connectProperties属性来打开mergeSql功能；慢SQL记录
+        connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+        # 合并多个DruidDataSource的监控数据
+        #useGlobalDataSourceStat: true
+      # 第二个数据源
+      slave1:
+        username: root
+        password: root
+        jdbc-url: jdbc:mysql://localhost:3306/sb40_02?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+        driver-class-name: com.mysql.jdbc.Driver
+#        type: com.alibaba.druid.pool.DruidDataSource
+        # 初始化连接个数，init方法或第一次getConnection时
+        initialSize: 5
+        # 最小连接数量
+        minIdle: 5
+        # 最大连接数量
+        maxActive: 20
+        # 获取连接时最大等待时间，单位毫秒
+        maxWait: 60000
+        # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+        timeBetweenEvictionRunsMillis: 60000
+        # 配置一个连接在池中最小生存的时间，单位是毫秒
+        minEvictableIdleTimeMillis: 300000
+        # 用来检测连接是否有效的sql
+        validationQuery: SELECT 1 FROM DUAL
+        # 建议配置为true，不影响性能，并且保证安全性。申请连接的时候检测，如果空闲时间大于timeBetweenEvictionRunsMillis，执行validationQuery检测连接是否有效。
+        testWhileIdle: true
+        # 申请连接时执行validationQuery检测连接是否有效，做了这个会降低性能
+        testOnBorrow: false
+        # 归还连接时执行validationQuery检测连接是否有效，做了这个会降低性能
+        testOnReturn: false
+        # 打开PSCache，并且指定每个连接上PSCache的大小
+        poolPreparedStatements: true
+        maxPoolPreparedStatementPerConnectionSize: 20
+        # 配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+        filters: stat,wall,log4j
+        # 通过connectProperties属性来打开mergeSql功能；慢SQL记录
+        connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+        # 合并多个DruidDataSource的监控数据
+        #useGlobalDataSourceStat: true
+
+
+
+
+
+
+
+
