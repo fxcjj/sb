@@ -1,13 +1,16 @@
 package com.vic.sb38;
 
 import com.alibaba.fastjson.JSON;
+
 import com.vic.sb38.entity.User;
 import com.vic.sb38.mapper.UserMapper;
+import org.apache.ibatis.session.RowBounds;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import tk.mybatis.mapper.entity.Example;
 
 import java.util.List;
 
@@ -44,6 +47,44 @@ public class Sb38ApplicationTests {
         u.setAge(29);
         int insert = userMapper.insert(u);
         System.out.println(insert);
+    }
+
+    /**
+     * 分页查询
+     */
+    @Test
+    public void testSelectByRowBounds() {
+        User u = new User();
+//        u.setName("martin");
+        u.setAge(18);
+
+        RowBounds rowBounds = new RowBounds(1, 10);
+        List<User> users = userMapper.selectByRowBounds(u, rowBounds);
+
+        System.out.println(JSON.toJSONString(users));
+    }
+
+    /**
+     * 分页查询
+     */
+    @Test
+    public void testSelectByExampleAndRowBounds() {
+
+        // 查询条件
+        Example example = new Example(User.class);
+
+        // 排序
+        example.orderBy("age").desc();
+
+        // 过滤条件
+        example.createCriteria()
+                .andGreaterThan("age", 20);
+
+        // 分页
+        RowBounds rowBounds = new RowBounds(0, 5);
+        List<User> users = userMapper.selectByExampleAndRowBounds(example, rowBounds);
+
+        System.out.println(JSON.toJSONString(users));
     }
 
 }
