@@ -8,6 +8,7 @@ import com.vic.sb39.bo.PageBo;
 import com.vic.sb39.bo.UserBo;
 import com.vic.sb39.entity.User;
 import com.vic.sb39.mapper.UserMapper;
+import com.vic.sb39.service.UserService;
 import com.vic.sb39.vo.UserVo;
 import org.apache.ibatis.session.RowBounds;
 import org.junit.Test;
@@ -29,6 +30,9 @@ public class Sb39ApplicationTests {
 
     @Autowired
     UserMapper userMapper;
+
+    @Autowired
+    UserService userService;
 
     @Test
     public void testFindById() {
@@ -70,30 +74,8 @@ public class Sb39ApplicationTests {
         pageBo.setParam(userBo);
 
         // 设置分页参数
-        PageInfo<UserVo> pageInfo = pageUser(pageBo);
-        List<UserVo> list = pageInfo.getList();
-        System.out.println(JSON.toJSONString(list));
+        PageInfo<UserVo> pageInfo = userService.page(pageBo);
+        System.out.println(JSON.toJSONString(pageInfo));
     }
 
-    /**
-     * 使用 pagehelper 工具类分页查询用户
-     * @param pageBo
-     * @return
-     */
-    public PageInfo<UserVo> pageUser(PageBo<UserBo> pageBo) {
-        return PageHelper.startPage(pageBo.getPageNum(), pageBo.getPageSize())
-                .doSelectPageInfo(() -> listUser(pageBo));
-    }
-
-    public List<UserVo> listUser(PageBo<UserBo> pageBo) {
-        List<User> users = userMapper.selectAll();
-        if(CollectionUtils.isEmpty(users)) {
-            return Collections.emptyList();
-        }
-        return users.stream().map(e -> {
-            UserVo vo = new UserVo();
-            BeanUtils.copyProperties(e, vo);
-            return vo;
-        }).collect(Collectors.toList());
-    }
 }

@@ -16,7 +16,7 @@ import java.util.List;
 public class UserController {
 
     @Autowired
-    private UserService userService;
+    UserService userService;
 
     @GetMapping("findById")
     public User findById(@RequestParam("id") Integer id) {
