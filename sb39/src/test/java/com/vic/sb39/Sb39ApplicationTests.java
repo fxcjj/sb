@@ -1,17 +1,27 @@
 package com.vic.sb39;
 
 import com.alibaba.fastjson.JSON;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.vic.sb39.bo.PageBo;
+import com.vic.sb39.bo.UserBo;
 import com.vic.sb39.entity.User;
 import com.vic.sb39.mapper.UserMapper;
+import com.vic.sb39.vo.UserVo;
 import org.apache.ibatis.session.RowBounds;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.util.CollectionUtils;
 import tk.mybatis.mapper.entity.Example;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
@@ -20,7 +30,7 @@ public class Sb39ApplicationTests {
     @Autowired
     UserMapper userMapper;
 
-    @org.junit.Test
+    @Test
     public void testFindById() {
         User conUser = new User();
         conUser.setId(1L);
@@ -33,13 +43,8 @@ public class Sb39ApplicationTests {
         System.out.println(user.getName());
     }
 
-    @org.junit.Test
-    public void testFindAll() {
-        List<User> users = userMapper.selectAll();
-        System.out.println(JSON.toJSONString(users));
-    }
 
-    @org.junit.Test
+    @Test
     public void testInsert() {
         User u = new User();
         u.setName("martin");
@@ -51,39 +56,44 @@ public class Sb39ApplicationTests {
     /**
      * 分页查询
      */
-    @org.junit.Test
-    public void testSelectByRowBounds() {
-        User u = new User();
-//        u.setName("martin");
-        u.setAge(18);
+    @Test
+    public void testPage() {
 
-        RowBounds rowBounds = new RowBounds(1, 10);
-        List<User> users = userMapper.selectByRowBounds(u, rowBounds);
+        PageBo pageBo = new PageBo();
+        pageBo.setPageNum(1);
+        pageBo.setPageSize(3);
 
-        System.out.println(JSON.toJSONString(users));
+        UserBo userBo = new UserBo();
+//        userBo.setName("martin");
+        userBo.setAge(18);
+
+        pageBo.setParam(userBo);
+
+        // 设置分页参数
+        PageInfo<UserVo> pageInfo = pageUser(pageBo);
+        List<UserVo> list = pageInfo.getList();
+        System.out.println(JSON.toJSONString(list));
     }
 
     /**
-     * 分页查询
+     * 使用 pagehelper 工具类分页查询用户
+     * @param pageBo
+     * @return
      */
-    @Test
-    public void testSelectByExampleAndRowBounds() {
-
-        // 查询条件
-        Example example = new Example(User.class);
-
-        // 排序
-        example.orderBy("age").desc();
-
-        // 过滤条件
-        example.createCriteria()
-                .andGreaterThan("age", 20);
-
-        // 分页
-        RowBounds rowBounds = new RowBounds(0, 5);
-        List<User> users = userMapper.selectByExampleAndRowBounds(example, rowBounds);
-
-        System.out.println(JSON.toJSONString(users));
+    public PageInfo<UserVo> pageUser(PageBo<UserBo> pageBo) {
+        return PageHelper.startPage(pageBo.getPageNum(), pageBo.getPageSize())
+                .doSelectPageInfo(() -> listUser(pageBo));
     }
 
+    public List<UserVo> listUser(PageBo<UserBo> pageBo) {
+        List<User> users = userMapper.selectAll();
+        if(CollectionUtils.isEmpty(users)) {
+            return Collections.emptyList();
+        }
+        return users.stream().map(e -> {
+            UserVo vo = new UserVo();
+            BeanUtils.copyProperties(e, vo);
+            return vo;
+        }).collect(Collectors.toList());
+    }
 }

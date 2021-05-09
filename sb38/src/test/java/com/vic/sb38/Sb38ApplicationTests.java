@@ -77,8 +77,8 @@ public class Sb38ApplicationTests {
         example.orderBy("age").desc();
 
         // 过滤条件
-        example.createCriteria()
-                .andGreaterThan("age", 20);
+        Example.Criteria criteria = example.createCriteria();
+        criteria.andGreaterThan("age", 10);
 
         // 分页
         RowBounds rowBounds = new RowBounds(0, 5);
