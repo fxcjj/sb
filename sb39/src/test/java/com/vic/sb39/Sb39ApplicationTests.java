@@ -64,7 +64,7 @@ public class Sb39ApplicationTests {
     public void testPage() {
 
         PageBo pageBo = new PageBo();
-        pageBo.setPageNum(1);
+        pageBo.setPageNum(2);
         pageBo.setPageSize(3);
 
         UserBo userBo = new UserBo();
