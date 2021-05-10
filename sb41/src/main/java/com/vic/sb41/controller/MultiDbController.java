@@ -1,9 +1,9 @@
 package com.vic.sb41.controller;
 
-import com.vic.sb40.entity.Student;
-import com.vic.sb40.entity.User;
-import com.vic.sb40.service.StudentService;
-import com.vic.sb40.service.UserService;
+import com.vic.sb41.entity.Order;
+import com.vic.sb41.entity.User;
+import com.vic.sb41.service.OrderService;
+import com.vic.sb41.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +18,7 @@ public class MultiDbController {
     UserService userService;
 
     @Autowired
-    StudentService studentService;
+    OrderService orderService;
 
     @GetMapping("findUserById")
     public User findUserById(@RequestParam("id") Long id) {
@@ -26,8 +26,8 @@ public class MultiDbController {
     }
 
     @GetMapping("findStudentById")
-    public Student findStudentById(@RequestParam("id") Long id) {
-        return studentService.findById(id);
+    public Order findStudentById(@RequestParam("id") Long id) {
+        return orderService.findById(id);
     }
 
 }

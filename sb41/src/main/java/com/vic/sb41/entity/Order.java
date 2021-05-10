@@ -1,9 +1,9 @@
 package com.vic.sb41.entity;
 
-public class Student {
+public class Order {
     private Long id;
     private String name;
-    private Integer age;
+    private Long userId;
 
     public Long getId() {
         return id;
@@ -21,11 +21,11 @@ public class Student {
         this.name = name;
     }
 
-    public Integer getAge() {
-        return age;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setAge(Integer age) {
-        this.age = age;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 }

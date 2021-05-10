@@ -13,3 +13,9 @@ mybatis:
   # mapper配置文件
   mapper-locations: classpath:mapping/*Mapper.xml
   type-aliases-package: com.vic.sb37.entity
+  #IDENTITY: MYSQL #取回主键的方式
+  #notEmpty: false #insert和update中，是否判断字符串类型!=''
+  configuration:
+    #进行自动映射时，数据以下划线命名，如数据库返回的"order_address"命名字段是否映射为class的"orderAddress"字段。默认为false
+    map-underscore-to-camel-case: true
+    # 输出SQL执行语句 （log4j2本身可以输出sql语句）
