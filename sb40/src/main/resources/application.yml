@@ -8,7 +8,7 @@ spring:
         username: root
         password: root
         jdbc-url: jdbc:mysql://localhost:3306/sb40_01?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
-        driver-class-name: com.mysql.jdbc.Driver
+        driver-class-name: com.mysql.cj.jdbc.Driver
 #        type: com.alibaba.druid.pool.DruidDataSource
         # 初始化连接个数，init方法或第一次getConnection时
         initialSize: 5
@@ -44,7 +44,7 @@ spring:
         username: root
         password: root
         jdbc-url: jdbc:mysql://localhost:3306/sb40_02?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
-        driver-class-name: com.mysql.jdbc.Driver
+        driver-class-name: com.mysql.cj.jdbc.Driver
 #        type: com.alibaba.druid.pool.DruidDataSource
         # 初始化连接个数，init方法或第一次getConnection时
         initialSize: 5

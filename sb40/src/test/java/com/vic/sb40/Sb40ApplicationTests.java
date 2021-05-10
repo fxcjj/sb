@@ -20,12 +20,18 @@ public class Sb40ApplicationTests {
     @Autowired
     StudentService studentService;
 
+    /**
+     * 读取 master 数据源
+     */
     @Test
     public void testFindUserById() {
         User user = userService.findById(1L);
         System.out.println(user.getName());
     }
 
+    /**
+     * 读取 slave 数据源
+     */
     @Test
     public void testFindStudentById() {
         Student student = studentService.findById(1L);
