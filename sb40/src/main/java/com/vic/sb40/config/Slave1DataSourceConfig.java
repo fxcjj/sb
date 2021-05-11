@@ -20,6 +20,8 @@ import javax.sql.DataSource;
 public class Slave1DataSourceConfig {
 
     static final String PACKAGE = "com.vic.sb40.dao.slave1";
+    // entity 所在包
+    static final String ENTITY_PACKAGE = "com.vic.sb40.entity";
     static final String MAPPER_LOCATION = "classpath:mapper/slave1/*.xml";
 
     // 首先创建 DataSource
@@ -34,11 +36,16 @@ public class Slave1DataSourceConfig {
     public SqlSessionFactory slave1SqlSessionFactory(@Qualifier("slave1DataSource") DataSource dataSource) throws Exception {
         SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
         bean.setDataSource(dataSource);
+        // 设置entity所在包
+        bean.setTypeAliasesPackage(ENTITY_PACKAGE);
+        // 设置config文件
+//        bean.setConfigLocation(new PathMatchingResourcePatternResolver().getResource("classpath:mybatis-config.xml"));
+        // 设置 mapper 路径
         bean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources(MAPPER_LOCATION));
         return bean.getObject();
     }
 
-    // 再创建事务
+    // 再创建事务管理器
     @Bean //(name = "slave1TransactionManager")
     public DataSourceTransactionManager slave1TransactionManager(@Qualifier("slave1DataSource") DataSource dataSource) {
         return new DataSourceTransactionManager(dataSource);

@@ -1,7 +1,7 @@
+dynamic-datasource-spring-boot-starter 多数据源
 1. spring boot, mybatis
-2. 使用 dynamic-datasource-spring-boot-starter 实现多数据源
-3. 参考测试类 com.vic.sb41.OrderMapperTests, com.vic.sb41.UserMapperTests
-4. 事务相关场景测试，参考测试类 com.vic.sb41.OrderServiceTests
+2. 参考测试类 com.vic.sb41.OrderMapperTests, com.vic.sb41.UserMapperTests
+3. 事务相关场景测试，参考测试类 com.vic.sb41.OrderServiceTests
 
 
 References
