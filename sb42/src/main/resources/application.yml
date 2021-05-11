@@ -5,19 +5,26 @@ spring:
     # dynamic-datasource-spring-boot-starter 动态数据源的配置内容
     dynamic:
       # 设置默认数据源，默认值为 master
-      primary: users
+      primary: order-master
       datasource:
-        # 用户数据源配置
-        users:
+        # 订单主库数据源配置
+        order-master:
           username: root
           password: root
-          url: jdbc:mysql://localhost:3306/sb41_user?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+          url: jdbc:mysql://localhost:3306/sb42_order?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
           driver-class-name: com.mysql.cj.jdbc.Driver
-        # 订单数据源配置
-        orders:
+        # order-slave_1和order-slave_2形成一个数据源级，即 order-slave 组，在下划线判断
+        # 订单从库1数据源配置
+        order-slave_1:
           username: root
           password: root
-          url: jdbc:mysql://localhost:3306/sb41_order?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+          url: jdbc:mysql://localhost:3306/sb42_order_s01?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+          driver-class-name: com.mysql.cj.jdbc.Driver
+        # 订单从库2数据源配置
+        order-slave_2:
+          username: root
+          password: root
+          url: jdbc:mysql://localhost:3306/sb42_order_s02?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
           driver-class-name: com.mysql.cj.jdbc.Driver
 
 # mybatis的相关配置

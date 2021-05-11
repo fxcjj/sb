@@ -1,5 +1,6 @@
 package com.vic.sb42;
 
+import com.vic.sb42.entity.Order;
 import com.vic.sb42.service.OrderService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,28 +16,11 @@ public class OrderServiceTests {
     OrderService orderService;
 
     @Test
-    public void testMethod01() {
-        orderService.method01();
-    }
-
-    @Test
-    public void testMethod02() {
-        orderService.method02();
-    }
-
-    @Test
-    public void testMethod03() {
-        orderService.method03();
-    }
-
-    @Test
-    public void testMethod04() {
-        orderService.method04();
-    }
-
-    @Test
-    public void testMethod05() {
-        orderService.method05();
+    public void testAdd() {
+        Order order = new Order();
+        order.setName("key");
+        order.setUserId(5L);
+        orderService.add(order);
     }
 
 }

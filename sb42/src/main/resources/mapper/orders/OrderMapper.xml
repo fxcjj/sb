@@ -8,8 +8,31 @@
         <result column="user_id" jdbcType="BIGINT" property="userId" />
     </resultMap>
 
-    <select id="findById" resultMap="BaseResultMap">
+    <select id="findById0" resultMap="BaseResultMap">
         select * from t_order where id = #{id}
     </select>
 
+    <select id="findById1" resultMap="BaseResultMap">
+        select * from t_order where id = #{id}
+    </select>
+
+    <select id="findById2" resultMap="BaseResultMap">
+        select * from t_order where id = #{id}
+    </select>
+
+    <!-- 插入用户后返回id 方式1
+	1 useGeneratedKeys
+	取值范围：true|false
+	默认值：false
+	含义：设置是否使用JDBC的getGenereatedKeys方法获取主键并赋值到keyProperty设置的领域模型属性中。
+	MySQL和SQLServer执行auto-generated key field，因此当数据库设置好自增长主键后，可通过JDBC的getGeneratedKeys方法获取。
+	但像Oralce等不支持auto-generated key field的数据库就不能用这种方法获取主键了。
+	2 keyProperty
+	(仅对 insert 有用) 标记一个属性, MyBatis 会通过 getGeneratedKeys 或者通过 insert 语句的 selectKey 子元素设置它的值。默认: 不设置。
+	如下所示，我们在insert中指定了keyProperty="id"，其中userId代表插入的User对象的主键属性。
+	-->
+    <insert id="insertAndGetId1" parameterType="Order" useGeneratedKeys="true" keyProperty="id">
+		insert into t_order(name, user_id)
+		values(#{name}, #{userId});
+	</insert>
 </mapper>
