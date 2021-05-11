@@ -8,6 +8,7 @@ import com.vic.sb42.dao.orders.OrderMapper;
 import com.vic.sb42.dao.uesrs.UserMapper;
 import com.vic.sb42.entity.Order;
 import com.vic.sb42.entity.User;
+import org.springframework.aop.framework.AopContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -28,11 +29,14 @@ public class OrderService {
         java.lang.IllegalStateException: Cannot find current proxy: Set 'exposeProxy' property
         on Advised to 'true' to make it available, and ensure that AopContext.currentProxy()
         is invoked in the same thread as the AOP invocation context.
+
+        解决方案：
+        在启动类上添加 @EnableAspectJAutoProxy(exposeProxy = true)
          */
-//        return (OrderService) AopContext.currentProxy();
+        return (OrderService) AopContext.currentProxy();
 
         // 返回代理对象
-        return SpringUtil.getBean(this.getClass());
+//        return SpringUtil.getBean(this.getClass());
 
         // 返回真实对象
 //        return this;

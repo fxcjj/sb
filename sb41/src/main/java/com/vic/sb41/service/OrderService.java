@@ -29,11 +29,13 @@ public class OrderService {
         java.lang.IllegalStateException: Cannot find current proxy: Set 'exposeProxy' property
         on Advised to 'true' to make it available, and ensure that AopContext.currentProxy()
         is invoked in the same thread as the AOP invocation context.
+        解决方案：
+        在启动类上添加 @EnableAspectJAutoProxy(exposeProxy = true)
          */
-//        return (OrderService) AopContext.currentProxy();
+        return (OrderService) AopContext.currentProxy();
 
         // 返回代理对象
-        return SpringUtil.getBean(this.getClass());
+//        return SpringUtil.getBean(this.getClass());
 
         // 返回真实对象
 //        return this;
@@ -124,7 +126,6 @@ public class OrderService {
         User user = userMapper.findById(1L);
         System.out.println(JSON.toJSONString(user));
     }
-
 
     /**
      * 创建事务
