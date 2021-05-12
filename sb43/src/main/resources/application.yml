@@ -1,0 +1,46 @@
+
+spring:
+  shardingsphere:
+    datasource:
+      # 所有数据源的名字
+      names: ds-orders, ds-users
+      ds-orders:
+        # 使用 hikari 数据库连接池
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbc-url: jdbc:mysql://localhost:3306/sb43_order?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+        username: root
+        password: root
+      ds-users:
+        # 使用 hikari 数据库连接池
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbc-url: jdbc:mysql://localhost:3306/sb43_user?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+        username: root
+        password: root
+    # 分片规则
+    sharding:
+      tables:
+        # t_order 表配置
+        t_order:
+          actualDataNodes: ds-orders.t_order # 映射到 ds-orders 数据源的 t_order 表
+        # t_user 表配置
+        t_user:
+          actualDataNodes: ds-users.t_user # 映射到 ds-users 数据源的 t_user 表
+
+
+# mybatis的相关配置
+mybatis:
+  # mapper配置文件
+  mapper-locations: classpath:mapper/**/*Mapper.xml
+  type-aliases-package: com.vic.sb43.entity
+#  IDENTITY: MYSQL #取回主键的方式
+#  notEmpty: false #insert和update中，是否判断字符串类型!=''
+  configuration:  #进行自动映射时，数据以下划线命名，如数据库返回的"order_total"命名字段是否映射为class的"orderTotal"字段。默认为false
+    map-underscore-to-camel-case: true
+
+
+
+
+
+
