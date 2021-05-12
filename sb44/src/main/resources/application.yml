@@ -1,0 +1,54 @@
+
+spring:
+  shardingsphere:
+    datasource:
+      # 所有数据源的名字
+      names: order-master, order-slave-1, order-slave-2
+      # 订单主库数据源配置
+      order-master:
+        # 使用 hikari 数据库连接池
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbc-url: jdbc:mysql://localhost:3306/sb42_order?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+        username: root
+        password: root
+      # 订单从库1数据源配置
+      order-slave-1:
+        # 使用 hikari 数据库连接池
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbc-url: jdbc:mysql://localhost:3306/sb42_order_s01?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+        username: root
+        password: root
+      # 订单从库2数据源配置
+      order-slave-2:
+        # 使用 hikari 数据库连接池
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbc-url: jdbc:mysql://localhost:3306/sb42_order_s02?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+        username: root
+        password: root
+    # 读写分离配置，对应 YamlMasterSlaveRuleConfiguration 配置类
+    masterslave:
+      # 名字，任意，需要保证唯一
+      name: ms
+      # 主库数据源
+      master-data-source-name: order-master
+      # 从库数据源
+      slave-data-source-names: order-slave-1, order-slave-2
+
+# mybatis的相关配置
+mybatis:
+  # mapper配置文件
+  mapper-locations: classpath:mapper/**/*Mapper.xml
+  type-aliases-package: com.vic.sb44.entity
+#  IDENTITY: MYSQL #取回主键的方式
+#  notEmpty: false #insert和update中，是否判断字符串类型!=''
+  configuration:  #进行自动映射时，数据以下划线命名，如数据库返回的"order_total"命名字段是否映射为class的"orderTotal"字段。默认为false
+    map-underscore-to-camel-case: true
+
+
+
+
+
+
