@@ -6,4 +6,8 @@ mybatis多数据源
 
 
 References
+// SpringBoot + Mybatis + Druid + PageHelper 实现多数据源并分页
 https://mp.weixin.qq.com/s/1NrtmV_yHpsGicyeiRD05w
+
+// 基于 SpringBoot，来实现MySQL读写分离技术
+https://mp.weixin.qq.com/s/oKPUWxb26zjbJVwBfWGMmQ
