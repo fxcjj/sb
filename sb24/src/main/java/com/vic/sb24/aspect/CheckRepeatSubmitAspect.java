@@ -37,16 +37,18 @@ public class CheckRepeatSubmitAspect {
     public Object doAround(ProceedingJoinPoint pjp, CheckRepeatSubmit checkRepeatSubmit) {
         try {
             HttpServletRequest request = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder.getRequestAttributes())).getRequest();
+            // 先从header中取
             String token = request.getHeader(TOKEN_KEY);
             String ip = getClientIp(request).replaceAll(":", "");
+            // 为空再从请求参数中取
             if(StringUtils.isEmpty(token)) {
                 token = request.getParameter(TOKEN_KEY);
             }
 
-            // 重复提交key
+            // 重复提交的key
             String key = token + ":" + ip + "-" + request.getServletPath();
 
-            // 添加
+            // 添加，指定有效时间
             Boolean add = stringRedisTemplate.opsForValue().setIfAbsent(key, "1", checkRepeatSubmit.delaySeconds(), TimeUnit.SECONDS);
             if(!add) {
                 log.error("表单重复提交， token:{}, uri:{}", token, request.getServletPath());

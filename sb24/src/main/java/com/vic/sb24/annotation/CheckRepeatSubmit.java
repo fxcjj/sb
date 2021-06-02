@@ -12,5 +12,8 @@ import java.lang.annotation.*;
 @Documented
 public @interface CheckRepeatSubmit {
 
+    /**
+     * N秒内判定为重复提交，默认3秒内
+     */
     int delaySeconds() default 3;
 }

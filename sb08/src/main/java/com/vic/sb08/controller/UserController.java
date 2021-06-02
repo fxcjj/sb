@@ -28,6 +28,21 @@ public class UserController {
 
     @GetMapping("test")
     public String test() {
+        try {
+            Thread.sleep(20000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return "ok";
+    }
+
+    @GetMapping("test2")
+    public String test2() {
+//        new Thread(() -> {
+//            while (true) {
+//                System.out.println("aaaa");
+//            }
+//        }).start();
         return "ok";
     }
 
