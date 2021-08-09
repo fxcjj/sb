@@ -1,6 +1,10 @@
 
 spring:
   shardingsphere:
+    # 打印sql
+    props:
+      sql:
+        show: true
     datasource:
       # 所有数据源的名字
       names: ds-orders, ds-users
@@ -8,6 +12,7 @@ spring:
         # 使用 hikari 数据库连接池
         type: com.zaxxer.hikari.HikariDataSource
         driver-class-name: com.mysql.cj.jdbc.Driver
+        # serverTimezone=GMT%2b8
         jdbc-url: jdbc:mysql://localhost:3306/sb43_order?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
         username: root
         password: root
@@ -27,6 +32,7 @@ spring:
         # t_user 表配置
         t_user:
           actualDataNodes: ds-users.t_user # 映射到 ds-users 数据源的 t_user 表
+
 
 
 # mybatis的相关配置

@@ -2,6 +2,7 @@ package com.vic.sb01;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -12,8 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class DemoController {
 
     @RequestMapping(value = "/demo", method = RequestMethod.GET)
-    public String demo() {
-        return "hello,SpringBoot!";
+    public String demo(@RequestParam("wd") String wd) {
+        return wd + " hello,SpringBoot!";
     }
 
 }

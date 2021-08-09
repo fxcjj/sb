@@ -6,4 +6,4 @@ Reference
 https://blog.lqdev.cn/2018/07/23/springboot/chapter-eleven/
 
 // redis全局锁
-https://blog.csdn.net/forezp/article/details/68957681
+https://www.cnblogs.com/pingping-joe/p/10681231.html

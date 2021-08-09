@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.vic.sb47.mapper.SeckillMapper">
+
+    <resultMap id="BaseResultMap" type="Seckill">
+        <id column="seckill_id" jdbcType="BIGINT" property="seckillId" />
+        <result column="name" jdbcType="VARCHAR" property="name" />
+        <result column="inventory" jdbcType="BIGINT" property="inventory" />
+        <result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
+        <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
+        <result column="version" jdbcType="BIGINT" property="version" />
+    </resultMap>
+
+    <select id="findBySeckillId" resultMap="BaseResultMap">
+        select * from t_seckill where seckill_id = #{seckillId}
+    </select>
+
+    <!-- mysql修改时基于行锁 -->
+    <update id="deInventoryByLock">
+        update t_seckill set inventory = inventory - 1 where seckill_id = #{seckillId} and inventory > 0;
+    </update>
+
+    <!-- mysql修改时基于乐观锁 -->
+    <update id="deInventoryByOptimisticLock">
+        update t_seckill set inventory = inventory - 1, version = version + 1 where seckill_id = #{seckillId} and inventory > 0 and version = #{version};
+    </update>
+
+</mapper>

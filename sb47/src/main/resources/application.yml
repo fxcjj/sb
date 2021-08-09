@@ -1,0 +1,48 @@
+server:
+  port: 8047
+
+spring:
+  datasource:
+    username: root
+    password: root
+    url: jdbc:mysql://localhost:3306/sb47?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+    driver-class-name: com.mysql.jdbc.Driver
+  # redis配置
+  redis:
+    # redis服务器地址
+    host: 192.168.6.121
+    # redis访问端口
+    port: 6379
+    # 数据库索引，默认为0
+    database: 4
+    # redis服务器连接密码
+    password: fooguy
+    # 连接超时时间（毫秒）
+    timeout: 10000ms
+    # lettuce客户端配置
+    lettuce:
+      pool:
+        # 连接池中可分配的最大连接数
+        # Maximum number of connections that can be allocated by the pool at a given
+        # time. Use a negative value for no limit.
+        max-active: 20
+        # 连接池中分配连接时的最大阻塞时间，使用负数无限阻塞
+        # Maximum amount of time a connection allocation should block before throwing an
+        # exception when the pool is exhausted. Use a negative value to block indefinitely.
+        max-wait: -1ms
+        # 连接池中最大空闲连接，默认8
+        max-idle: 8
+        # 连接池中最小空闲连接，默认0
+        min-idle: 5
+
+# mybatis的相关配置
+mybatis:
+  # mapper配置文件
+  mapper-locations: classpath:mapping/*Mapper.xml
+  type-aliases-package: com.vic.sb47.entity
+  #IDENTITY: MYSQL #取回主键的方式
+  #notEmpty: false #insert和update中，是否判断字符串类型!=''
+  configuration:
+    #进行自动映射时，数据以下划线命名，如数据库返回的"order_address"命名字段是否映射为class的"orderAddress"字段。默认为false
+    map-underscore-to-camel-case: true
+    # 输出SQL执行语句 （log4j2本身可以输出sql语句）
